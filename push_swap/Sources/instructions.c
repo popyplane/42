@@ -6,19 +6,19 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 18:34:00 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/02/21 19:33:05 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/04/24 15:02:03 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/instructions.h"
+#include "../Includes/push_swap.h"
 
 void	swap(t_list **a, char *str)
 {
 	t_list	*tmp;
 
-	tmp = (*a)->next->next;
-	(*a)->next->next = *a;
-	(*a)->next = tmp;
+	tmp = (*a)->n->n;
+	(*a)->n->n = *a;
+	(*a)->n = tmp;
 	ft_printf("%s\n", str);
 }
 
@@ -26,8 +26,8 @@ void	push(t_list **a, t_list **b, char *str)
 {
 	t_list	*tmp;
 	
-	tmp = (*a)->next;
-	(*a)->next = *b;
+	tmp = (*a)->n;
+	(*a)->n = *b;
 	*b = *a;
 	*a = tmp;
 	ft_printf("%s\n", str);
@@ -37,9 +37,9 @@ void	rotate(t_list **a, char *str)
 {
 	t_list	*tmp;
 	
-	tmp = (*a)->next;
+	tmp = (*a)->n;
 	ft_lstadd_back(a, a);
-	(*a)->next = NULL;
+	(*a)->n = NULL;
 	*a = tmp;
 	ft_printf("%s\n", str);
 }
@@ -48,13 +48,13 @@ void	rev_rotate(t_list **a, char *str)
 {
 	t_list	*cursor;
 
-	if ((*a)->next == NULL)
+	if ((*a)->n == NULL)
 		return;
 	cursor = *a;
-	while (cursor->next)
-		cursor = cursor->next;
-	cursor->next->next = *a;
-	*a = cursor->next;
-	cursor->next = NULL;
+	while (cursor->n)
+		cursor = cursor->n;
+	cursor->n->n = *a;
+	*a = cursor->n;
+	cursor->n = NULL;
 	ft_printf("%s\n", str);
 }

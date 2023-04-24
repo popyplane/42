@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lists.h                                            :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 14:33:27 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/04/24 15:01:13 by bvieilhe         ###   ########.fr       */
+/*   Created: 2022/11/18 15:05:52 by bvieilhe          #+#    #+#             */
+/*   Updated: 2023/02/16 15:54:11 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LISTS_H
-# define LISTS_H
+#include "ft_printf.h"
 
-# include "push_swap.h"
+int	ft_putnbr_fd(int nb, int fd)
+{
+	long long	llnb;
 
-typedef struct	s_list{
-	int				v;
-	struct s_list	*n;
-}				t_list;
-
-t_list	*ft_lstnew(void *content);
-t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-
-
-
-
-#endif
+	llnb = nb;
+	if (llnb < 0)
+	{
+		ft_putchar_fd('-', fd);
+		llnb *= -1;
+		return (ft_putnbr_base_fd(llnb, "0123456789", fd) + 1);
+	}
+	return (ft_putnbr_base_fd(llnb, "0123456789", fd));
+}

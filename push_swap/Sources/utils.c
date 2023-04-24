@@ -6,11 +6,11 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:05:04 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/02/21 16:32:22 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/04/24 15:02:21 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/utils.h"
+#include "../Includes/push_swap.h"
 
 t_list	*create_list(int argc, char **argv)
 {
@@ -35,8 +35,8 @@ int	*copy_as_tab(t_list *lst, int size)
 	i = -1;
 	while (++i < size)
 	{
-		tab[i] = lst->value;
-		lst = lst->next; 
+		tab[i] = lst->v;
+		lst = lst->n; 
 	}
 	return (tab);
 }
@@ -67,8 +67,8 @@ void	replace_args_by_indices(int *sorted_array, t_list *lst)
 	{
 		i = -1;
 		while (sorted_array[++i])
-			if (lst->value == sorted_array[i])
-				lst->value = i;
-		*lst = *lst->next; 
+			if (lst->v == sorted_array[i])
+				lst->v = i;
+		*lst = *lst->n; 
 	}
 }
