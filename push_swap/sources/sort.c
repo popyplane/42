@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 18:28:49 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/05/15 12:00:29 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/05/17 17:14:38 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void    ft_radix(t_list **a, t_list **b, int size)
     while ((size - 1) >> max_bin_length != 0)
         max_bin_length++;
     i = -1;
-    while (++i <= max_bin_length)
+    while (++i < max_bin_length - 1)
     {
         j = -1;
 		while (++j < size)

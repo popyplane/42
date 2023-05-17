@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 18:34:00 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/05/15 11:32:17 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/05/17 16:15:48 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ void	push(t_list **a, t_list **b, char *str)
 {
 	t_list	*tmp;
 	
+	if (!b)
+	{
+		*b = ft_lstnew((*a)->v);
+		tmp = (*a)->n;
+		free(*a);
+		*a = tmp;
+	}
 	tmp = (*a)->n;
 	(*a)->n = *b;
 	*b = *a;
@@ -46,15 +53,15 @@ void	rotate(t_list **a, char *str)
 
 void	rev_rotate(t_list **a, char *str)
 {
-	t_list	*cursor;
+	t_list	*last;
+	t_list	*second_last;
 
-	if ((*a)->n == NULL)
-		return;
-	cursor = *a;
-	while (cursor->n)
-		cursor = cursor->n;
-	cursor->n->n = *a;
-	*a = cursor->n;
-	cursor->n = NULL;
+	second_last = *a;
+	last = ft_lstlast(*a);
+	ft_lstadd_front(a, ft_lstnew(last->v));
+	while (second_last->n->n)
+		second_last = second_last->n;
+	free(second_last->n);
+	second_last->n = NULL;
 	ft_printf("%s\n", str);
 }

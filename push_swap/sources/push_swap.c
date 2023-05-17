@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 09:58:34 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/05/15 16:55:04 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/05/17 17:13:53 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,25 @@ int main(int argc, char **argv)
 {
     t_list  *a;
     t_list  *b;
-    int *tab;
+    int     *tab;
 
     if (!check_args(argc, argv))
         return (0);
     a = create_list(argc, argv);
-    b = a;
-    while (b != NULL)
-    {
-        ft_printf("\nb -> %d", b->v);
-        b = b->n;
-    }
+    b = NULL;
     tab = copy_as_tab(a, argc - 1);
-    ft_printf("\n-->tab[0]=%d\ntab[1]=%d\ntab[2]=%d", tab[0], tab[1], tab[2]);
-    sort_tab(&tab);
-    replace_args_by_indices(tab, a);
+    sort_tab(tab, argc - 1);
+    replace_args_by_indices(tab, argc - 1, a);
     free(tab);
-    if (argc == 3)
+    if (argc - 1 == 2)
+        ft_sort_two(&a);
+    else if (argc - 1 == 3)
         ft_sort_three(&a);
-    else if (argc == 5)
+    else if (argc - 1 == 5)
         ft_sort_five(&a, &b);
     else
         ft_radix(&a, &b, argc);
+    free_list(a);
+    free_list(b);
     return (0);
 }

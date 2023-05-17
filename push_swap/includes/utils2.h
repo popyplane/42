@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   utils2.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 15:07:44 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/05/17 11:33:53 by bvieilhe         ###   ########.fr       */
+/*   Created: 2023/05/17 10:39:07 by bvieilhe          #+#    #+#             */
+/*   Updated: 2023/05/17 16:54:09 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#ifndef UTILS2_H
+# define UTILS2_H
 
 # include "push_swap.h"
 
-t_list	*create_list(int argc, char **argv);
-int     check_args(int argc, char **argv);
-int		*copy_as_tab(t_list *lst, int size);
-void	sort_tab(int *tab, int size);
-void	replace_args_by_indices(int *sorted_array, int size, t_list *lst);
+int	ft_atoi(const char *nptr);
+void    free_list(t_list *head);
+void	ft_sort_two(t_list **lst);
+void	print_list(t_list *a);
+
 
 #endif
