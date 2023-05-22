@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 09:58:34 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/05/22 14:21:17 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/05/22 15:26:35 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int main(int argc, char **argv)
     //     ft_printf("tab[%d] = %d\n", i, tab[i]);
     replacing(&a, tab);
     free(tab);
+    // print_list(a);
     if (argc - 1 == 2)
         ft_sort_two(&a);
     else if (argc - 1 == 3)
@@ -43,8 +44,8 @@ int main(int argc, char **argv)
     else if (argc - 1 == 5)
         ft_sort_five(&a, &b);
     else
-        ft_radix(&a, &b, argc);
-    print_list(a);
+        ft_radix(&a, &b, argc - 1);
+    // print_list(a);
     free_list(a);
     free_list(b);
     return (0);

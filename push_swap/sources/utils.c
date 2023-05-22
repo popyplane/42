@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:05:04 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/05/17 17:09:15 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/05/22 15:45:16 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,16 @@ int	check_args(int argc, char **argv)
 	a = 0;
 	while (++a < argc)
 	{
-		b = 0;
+		b = -1;
 		while (argv[a][++b])
-			if (argv[a][b] != '-' && argv[a][b] <= '0' && argv[a][b] >= '9')
+			if (argv[a][b] != '-' && (argv[a][b] < '0' || argv[a][b] > '9'))
 				return (ft_putstr_fd("Error\n", 2), 0);
 		b = 0;
 		while (++b < argc)
 			if (a != b && ft_atoi(argv[a]) == ft_atoi(argv[b]))
 				return (ft_putstr_fd("Error\n", 2), 0);
+		if (ft_atol(argv[a]) < -2147483648 || ft_atol(argv[a]) > 2147483647)
+			return (ft_putstr_fd("Error\n", 2), 0);
 	}
 	return (1);
 }
