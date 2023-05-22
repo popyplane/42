@@ -6,7 +6,7 @@
 #    By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/15 10:59:14 by bvieilhe          #+#    #+#              #
-#    Updated: 2023/05/17 10:40:38 by bvieilhe         ###   ########.fr        #
+#    Updated: 2023/05/22 11:47:19 by bvieilhe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS = \
 		sources/sort.c \
 		sources/utils.c \
 		sources/utils2.c \
+		sources/replacing.c \
 		includes/ft_printf/ft_intlen.c \
 		includes/ft_printf/ft_printf.c \
 		includes/ft_printf/ft_putchar_fd.c \

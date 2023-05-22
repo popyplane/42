@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 18:34:00 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/05/17 16:15:48 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/05/22 14:43:06 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	swap(t_list **a, char *str)
 {
-	t_list	*tmp;
+	int	tmp;
 
-	tmp = (*a)->n->n;
-	(*a)->n->n = *a;
-	(*a)->n = tmp;
+	tmp = (*a)->v;
+	(*a)->v = (*a)->n->v;
+	(*a)->n->v = tmp;
 	ft_printf("%s\n", str);
 }
 
