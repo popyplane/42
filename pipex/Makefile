@@ -6,54 +6,45 @@
 #    By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/29 13:56:19 by bvieilhe          #+#    #+#              #
-#    Updated: 2023/05/29 14:35:25 by bvieilhe         ###   ########.fr        #
+#    Updated: 2023/05/31 16:39:44 by bvieilhe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		=	pipex
 
-SRCS 		=	srcs/pipex.c \
-				get_next_line/get_next_line.c \
-				get_next_line/get_next_line_utils.c
-OBJS 		=	${SRCS:.c=.o}
-HEADER 		=	-Iincludes
-
-CC			=	gcc
+CC			=	cc
 CFLAGS		=	-Wall -Werror -Wextra
+LDFLAGS		=	-L./libft -lft
 
-.c.o:			%.o : %.c
-								${CC} ${CFLAGS} ${HEADER} -c $(<:.c=.o)
+RM			=	rm
+RMFLAG		=	-f
+
+SRCS 		=	srcs/pipex.c \
+				srcs/utils.c
+INCLUDES	=	-I./includes/pipex.h \
+				-I./libft
+
+OBJS 		=	${SRCS:.c=.o}
 
 all:			${NAME}
 
-${NAME}:		${OBJS}
-								@echo "\033[33m----Compiling lib----"
-								@make re -C ./libft
-								@$(CC) ${OBJS} -Llibft -lft -o ${NAME}
-								@echo "\033[32mPipex Compiled! ᕦ(\033[31m♥\033[32m_\033[31m♥\033[32m)ᕤ\n"
+libft.a:
+				make -C ./libft
+
+${NAME}:		libft.a ${OBJS}
+				$(CC) $(CFLAGS) -o $@ $(OBJS) $(LDFLAGS)
+
+%.o: %.c
+				$(CC) $(CFLAGS) ${INCLUDES} -c $< -o $@								
 
 clean:
-								@make clean -C ./libft
-								@rm -f ${OBJS}
+				make -C ./libft clean				
+				${RM} ${RMFLAG} ${OBJS}
 
 fclean:			clean
-								@make fclean -C ./libft
-								@rm -f ${NAME}
-								@echo "\n\033[31mDeleting EVERYTHING! ⌐(ಠ۾ಠ)¬\n"
+				make -C ./libft fclean
+				${RM} ${RMFLAG} ${NAME}
 
 re:				fclean all
 
-party:
-								@printf "\033c"
-								@echo "\n\033[35m♪┏(・o･)┛♪"
-								@sleep 1
-								@printf "\033c"
-								@echo "\033[1;33m♪┗(・o･)┓♪"
-								@sleep 1
-								@printf "\033c"
-								@echo "\n\033[36m♪┏(・o･)┛♪"
-								@sleep 1
-								@printf "\033c"
-								@echo "\033[34m♪┗(・o･)┓♪\n"
-
-.PHONY: all clean fclean re re_bonus bonus party
+.PHONY: all clean fclean re libft.a
