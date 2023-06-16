@@ -6,7 +6,7 @@
 #    By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/29 13:56:19 by bvieilhe          #+#    #+#              #
-#    Updated: 2023/05/31 16:39:44 by bvieilhe         ###   ########.fr        #
+#    Updated: 2023/06/06 15:56:49 by bvieilhe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,7 @@ RMFLAG		=	-f
 
 SRCS 		=	srcs/pipex.c \
 				srcs/utils.c
-INCLUDES	=	-I./includes/pipex.h \
-				-I./libft
+INCLUDES	=	-I./includes/
 
 OBJS 		=	${SRCS:.c=.o}
 

@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:48:36 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/05/31 15:03:04 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/06/06 16:58:44 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,9 @@ void    execute(char *argv, char **envp)
     }
     if (execve(path, cmd, envp) == -1)
         error();
+}
+
+void    handle_urandom(char *argv)
+{
+    
 }
