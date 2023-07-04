@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 13:48:30 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/05/31 15:06:33 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/07/04 15:09:40 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	child_process(char **argv, char **envp, int *fd);
 void	parent_process(char **argv, char **envp, int *fd);
 
 /* ------ utils.c ------ */
-void    error(void);
-char    *find_path(char *cmd, char **envp);
-void    execute(char *argv, char **envp);
+void	error(void);
+char	*find_path(char *cmd, char **envp);
+void	execute(char *argv, char **envp);
 
-# endif
+#endif

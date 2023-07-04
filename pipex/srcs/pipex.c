@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:44:41 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/06/06 16:24:43 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/07/04 15:35:47 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	child_process(char **argv, char **envp, int *fd)
 {
-	int filein;
+	int	filein;
 
-	
 	filein = open(argv[1], O_RDONLY, 0777);
 	if (filein == -1)
 		error();

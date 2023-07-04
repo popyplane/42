@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 11:08:58 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/06/26 16:58:04 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/07/04 16:03:01 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	get_next_line(char **line)
 	buffer = malloc(10000 * sizeof(char));
 	if (!buffer)
 		return (-1);
+	ft_putstr_fd("pipex heredoc> ", STDOUT_FILENO);
 	reader = read(0, &c, 1);
 	while (reader && c != '\n' && c != '\0')
 	{
@@ -38,17 +39,17 @@ int	get_next_line(char **line)
 	return (reader);
 }
 
-void	here_doc(int argc, char **argv)
+void	here_doc(char **argv, int argc)
 {
 	pid_t	pid;
 	int		fd[2];
 	char	*line;
 
-	if (argc < 6)
+	if (argc < 6 || pipe(fd) == -1)
 		error();
-	if (pipe(fd) == -1)
+	pid = fork();
+	if (pid == -1)
 		error();
-	pid = fork(); //gerer pid = -1  !! 25 lignes
 	if (pid == 0)
 	{
 		close(fd[0]);
@@ -60,12 +61,15 @@ void	here_doc(int argc, char **argv)
 			ft_putstr_fd(line, fd[1]);
 		}
 	}
-	else 
-	{
-		close(fd[1]);
-		dup2(fd[0], STDIN_FILENO);
-		wait(NULL);
-	}
+	else
+		parent_here_doc(fd);
+}
+
+void	parent_here_doc(int *fd)
+{
+	close(fd[1]);
+	dup2(fd[0], STDIN_FILENO);
+	wait(NULL);
 }
 
 int	open_file(char *argv, int i)
