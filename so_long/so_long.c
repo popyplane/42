@@ -6,23 +6,18 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 10:34:28 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/04 16:36:41 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/07/18 18:02:01 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include "structs.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <X11/X.h>
 #include <X11/keysym.h>
  
-typedef struct s_data
-{
-	void *mlx_ptr;
-	void *win_ptr;
-} t_data;
- 
-int on_destroy(t_data *data)
+int on_destroy(t_mlx *data)
 {
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	mlx_destroy_display(data->mlx_ptr);
@@ -31,7 +26,7 @@ int on_destroy(t_data *data)
 	return (0);
 }
  
-int on_keypress(int keysym, t_data *data)
+int on_keypress(int keysym, t_mlx *data)
 {
 	(void)data;
 	printf("Pressed key: %d\n", keysym);
@@ -40,7 +35,7 @@ int on_keypress(int keysym, t_data *data)
  
 int main(void)
 {
-	t_data data;
+	t_mlx data;
  
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)

@@ -6,11 +6,14 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:33:30 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/06 13:41:38 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/07/20 15:02:49 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
+#include <stdlib.h>
+#include "mem.h"
+#include "strings.h"
 
 static char	**ft_init_list(char const *s, char c);
 static void	ft_fill_list_with_strs(char **list, char const *s, char c);

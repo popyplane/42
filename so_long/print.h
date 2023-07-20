@@ -1,17 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 13:58:17 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/20 15:03:16 by bvieilhe         ###   ########.fr       */
+/*   Created: 2023/07/20 14:27:16 by bvieilhe          #+#    #+#             */
+/*   Updated: 2023/07/20 14:33:31 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(void)
-{
+#ifndef PRINT_H
+#define PRINT_H
 
-	return (0);
-}
+int		ft_dprintf(int fd, const char *format, ...);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putnbr_fd(int nb, int fd);
+void	ft_putstr_fd(char *s, int fd);
+
+
+#endif

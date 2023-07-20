@@ -1,17 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mem.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 13:58:17 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/20 15:03:16 by bvieilhe         ###   ########.fr       */
+/*   Created: 2023/07/20 14:51:25 by bvieilhe          #+#    #+#             */
+/*   Updated: 2023/07/20 14:56:07 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(void)
-{
+#ifndef MEM_H
+#define MEM_H
 
-	return (0);
-}
+# include <stddef.h>
+
+char	**ber_to_str(char *map);
+void	*ft_calloc(size_t nmemb, size_t size);
+void	*ft_memset(void *source, int value, size_t size);
+
+#endif

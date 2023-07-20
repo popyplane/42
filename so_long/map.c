@@ -6,13 +6,14 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 08:02:45 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/12 16:36:46 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/07/20 15:20:57 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
+#include "strings.h"
 #include "structs.h"
-#include "utils.c"
+#include "utils.h"
 #include "error.h"
 
 // get the size of the map and return it's values, return {-1, -1} if map isn't rectangular
@@ -21,13 +22,15 @@ t_position	*get_size(char **map)
 	t_position	*size_max;
 	t_position	*err;
 
+	size_max = NULL;
+	err = NULL;
 	err->x = -1;
 	err->y = -1;
 	size_max->x = ft_strlen(*map);
 	size_max->y = 0;
 	while(map[size_max->y])
 	{
-		if (ft_strlen(map[size_max->y]) != size_max->x)
+		if ((int)ft_strlen(map[size_max->y]) != size_max->x)
 			return (err);
 		size_max->y++;
 	}
@@ -41,14 +44,15 @@ t_data	*get_data(char **map)
 	int		x;
 	int		y;
 
+	data = NULL;
 	data->exit = 0;
 	data->start = 0;
 	data->collectible = 0;
-	y = 0;
-	while (map[y])
+	y = -1;
+	while (map[++y])
 	{
-		x = 0;
-		while (map[y][x])
+		x = -1;
+		while (map[y][++x])
 		{
 			if (map[y][x] == 'P')
 				data->start++;
@@ -56,9 +60,7 @@ t_data	*get_data(char **map)
 				data->collectible++;
 			if (map[y][x] == 'E')
 				data->exit++;
-			x++;
 		}
-		y++;
 	}
 	return (data);
 }
@@ -96,10 +98,12 @@ t_position	*get_position(char **map, char token)
 	ft_error("The token hasn't been found");
 }
 
-t_map	init_map(char *map_ber)
+t_map	*init_map(char *map_ber)
 {
 	t_map	*map;
+	t_map	*test;
 
+	map->moves = 0;
 	map->map = ber_to_str(map_ber);
 	map->map_size = get_size(map->map);
 		if (map->map_size->y == -1)
@@ -108,4 +112,9 @@ t_map	init_map(char *map_ber)
 	check_data(map->data);
 	map->exit = get_position(map-map, 'E');
 	map->player_pos = get_position(map-map, 'P');
+	map->is_valid = false;
+	test = copy_map(map);
+	if (fill_flood(test, test->map, test->player_pos->x, test->player_pos->y))
+		return (map);
+	return(ft_error(REACH));
 }

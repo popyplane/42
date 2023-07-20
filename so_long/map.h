@@ -6,12 +6,16 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:37:51 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/12 16:34:40 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/07/20 15:05:13 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
 #define MAP_H
+
+#include "structs.h"
+#include "utils.c"
+#include "error.h"
 
 t_position	*get_size(char **map);
 t_data	*get_data(char **map);
@@ -19,7 +23,11 @@ void check_data(t_data *data);
 t_position	*get_position(char **map, char token);
 t_map	init_map(char *map_ber);
 
-
+t_bool	check_around_walls(t_map *map);
+t_bool	is_step_possible(t_map *map, int x, int y);
+t_bool	fill_flood(t_map *data, char **map, int x, int y);
+void copy_position(t_position *old, t_position *new);
+t_map copy_map(t_map *map);
 
 #endif
 

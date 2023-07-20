@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:06:08 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/12 13:32:50 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/07/20 15:07:03 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,19 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include "strings.h"
+#include "ft_split.h"
 #include "utils.h"
 
 char	**ber_to_str(char *map)
 {
 	char	buffer[10000];
 	char	*map_path;
-	char	c;
+	char	*c;
 	int		reader;
 	int		fd;
 	int		i;
 
+	c = NULL;
 	map_path = ft_strjoin("/map/", map);
 	fd = open(map_path, O_RDONLY, 0777);
 	reader = 1;
@@ -33,9 +35,10 @@ char	**ber_to_str(char *map)
 	while (reader)
 	{
 		reader = read(fd, c, 1);
-		buffer[i] = c;
+		buffer[i] = *c;
 		i++;
 	}
 	buffer[i] = '\0';
-	return (ft_split(ft_strdup(buffer)));
+	return (ft_split(ft_strdup(buffer), '\n'));
 }
+

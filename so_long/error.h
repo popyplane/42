@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:54:49 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/12 16:28:59 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/07/20 15:22:23 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,9 @@
 # define NO_E "MAP NOT VALID : No exit (E) found"
 # define NO_C "MAP NOT VALID : No colllectible (C) found"
 # define RCTGL "MAP NOT VALID : Map needs to have as much char on each line"
+# define MALLOC_FAILURE "MALLOC FAILURE : Last memory allocation failed"
+# define REACH "MAP NOT VALID : Ensure exit and collectible(s) to be reachable"
+
+void	ft_error(char *msg);
 
 #endif

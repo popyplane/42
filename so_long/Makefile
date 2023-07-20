@@ -6,14 +6,24 @@
 #    By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/16 10:34:24 by bvieilhe          #+#    #+#              #
-#    Updated: 2023/06/16 11:56:11 by bvieilhe         ###   ########.fr        #
+#    Updated: 2023/07/20 14:22:03 by bvieilhe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	so_long
 
-SRCS		=	srcs/so_long.c
-INCLUDES	=	-Iincludes -Imlx
+SRCS		=	error.c \
+				ft_split.c \
+				main.c \
+				map.c \
+				map2.c \
+				so_long.c \
+				strings.c \
+				texture.c \
+				utils.c
+
+INCLUDES	=	-Imlx \
+				-I.
 
 OBJS 		=	${SRCS:.c=.o}
 
@@ -22,7 +32,6 @@ RMFLAG		=	-f
 
 CC			=	cc
 CFLAGS		=	-Wall -Werror -Wextra
-LDFLAGS		=	-L./libft -lft
 MLX_FLAGS	=	-L./minilibx-linux -lmlx -L/usr/lib/X11 -lXext -lX11
  
 %.o: %.c
@@ -31,23 +40,18 @@ MLX_FLAGS	=	-L./minilibx-linux -lmlx -L/usr/lib/X11 -lXext -lX11
  
 all:			${NAME} minilibx
 
-libft:
-	make -C ./libft
-
 minilibx:
 	make -C ./minilibx-linux
 
-$(NAME):		libft minilibx $(OBJS)
+$(NAME):		minilibx $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS)
 
-clean:
-	make -C ./libft clean				
+clean:				
 	${RM} ${RMFLAG} ${OBJS}
 
 fclean:			clean
-	make -C ./libft fclean
 	${RM} ${RMFLAG} ${NAME}
 
 re:				fclean all
 
-.PHONY: all clean fclean re libft.a
+.PHONY: all clean fclean re 
