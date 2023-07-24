@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 14:51:25 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/20 14:56:07 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/07/24 17:04:37 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stddef.h>
 
-char	**ber_to_str(char *map);
+void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	*ft_memset(void *source, int value, size_t size);
 

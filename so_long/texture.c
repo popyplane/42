@@ -6,10 +6,11 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:29:25 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/19 14:39:21 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/07/24 16:55:40 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minilibx-linux/mlx.h"
 #include "texture.h"
 #include "structs.h"
 

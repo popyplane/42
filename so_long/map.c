@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 08:02:45 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/20 15:20:57 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/07/24 18:03:24 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "structs.h"
 #include "utils.h"
 #include "error.h"
+#include <stdlib.h>
 
 // get the size of the map and return it's values, return {-1, -1} if map isn't rectangular
 t_position	*get_size(char **map)
@@ -22,8 +23,12 @@ t_position	*get_size(char **map)
 	t_position	*size_max;
 	t_position	*err;
 
-	size_max = NULL;
-	err = NULL;
+	size_max = malloc(sizeof(t_position *));
+	if (!size_max)
+		ft_error(MALLOC_FAILURE);
+	err = malloc(sizeof(t_position *));
+	if (!err)
+		ft_error(MALLOC_FAILURE);
 	err->x = -1;
 	err->y = -1;
 	size_max->x = ft_strlen(*map);
@@ -31,9 +36,13 @@ t_position	*get_size(char **map)
 	while(map[size_max->y])
 	{
 		if ((int)ft_strlen(map[size_max->y]) != size_max->x)
+		{
+			free(size_max);
 			return (err);
+		}
 		size_max->y++;
 	}
+	free(err);
 	return (size_max);
 }
 
@@ -44,7 +53,9 @@ t_data	*get_data(char **map)
 	int		x;
 	int		y;
 
-	data = NULL;
+	data = malloc(sizeof(t_data *));
+	if (!data)
+		ft_error(MALLOC_FAILURE);
 	data->exit = 0;
 	data->start = 0;
 	data->collectible = 0;
@@ -83,6 +94,9 @@ t_position	*get_position(char **map, char token)
 {
 	t_position *pos;
 
+	pos = malloc(sizeof(t_position *));
+	if (!pos)
+		return(0);
 	pos->y = 0;
 	while (map[pos->y])
 	{
@@ -95,7 +109,9 @@ t_position	*get_position(char **map, char token)
 		}
 		pos->y++;
 	}
+	free(pos);
 	ft_error("The token hasn't been found");
+	return(0);
 }
 
 t_map	*init_map(char *map_ber)
@@ -103,6 +119,10 @@ t_map	*init_map(char *map_ber)
 	t_map	*map;
 	t_map	*test;
 
+	map = malloc(sizeof(t_map *));
+	if (!map)
+		ft_error(MALLOC_FAILURE);
+	test = NULL;
 	map->moves = 0;
 	map->map = ber_to_str(map_ber);
 	map->map_size = get_size(map->map);
@@ -110,11 +130,12 @@ t_map	*init_map(char *map_ber)
 			ft_error(RCTGL);										
 	map->data = get_data(map->map);
 	check_data(map->data);
-	map->exit = get_position(map-map, 'E');
-	map->player_pos = get_position(map-map, 'P');
+	map->exit = get_position(map->map, EXIT);
+	map->player_pos = get_position(map->map, 'P');
 	map->is_valid = false;
 	test = copy_map(map);
 	if (fill_flood(test, test->map, test->player_pos->x, test->player_pos->y))
 		return (map);
-	return(ft_error(REACH));
+	ft_error(REACH);
+	return(0);
 }

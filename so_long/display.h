@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.h                                            :+:      :+:    :+:   */
+/*   display.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/20 14:27:16 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/24 16:59:36 by bvieilhe         ###   ########.fr       */
+/*   Created: 2023/07/24 17:32:09 by bvieilhe          #+#    #+#             */
+/*   Updated: 2023/07/24 17:48:01 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINT_H
-#define PRINT_H
+#ifndef DISPLAY_H
+#define DISPLAY_H
 
-int	ft_dprintf(int fd, const char *format, ...);
-int	ft_putchar_fd(char c, int fd);
-int	ft_putnbr_fd(int nb, int fd);
-int	ft_putstr_fd(char *s, int fd);
-
+# define TILE_SIZE 50
+# define SCORE_OFFSET 50
 
 #endif

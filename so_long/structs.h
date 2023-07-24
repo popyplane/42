@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:10:28 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/19 14:40:16 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/07/24 18:03:50 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define STRUCTS_H
 
 # define WALL '1'
-# define EMPTY '0'
+# define FLOOR '0'
 # define COLL 'C'
 # define EXIT 'E'
 # define PLAYER 'P'
@@ -33,6 +33,7 @@ typedef struct s_mlx{
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	*textures[5];
+	t_map	*map;
 } t_mlx;
 
 typedef struct s_data{

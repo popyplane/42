@@ -6,12 +6,15 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:56:43 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/20 14:59:15 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/07/24 17:00:57 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
+#include <stddef.h>
+#include <stdlib.h>
 #include "strings.h"
+#include "mem.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
