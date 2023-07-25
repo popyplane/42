@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 08:02:45 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/24 18:03:24 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/07/25 17:15:31 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "structs.h"
 #include "utils.h"
 #include "error.h"
+#include "free.h"
 #include <stdlib.h>
 
 // get the size of the map and return it's values, return {-1, -1} if map isn't rectangular
@@ -122,7 +123,7 @@ t_map	*init_map(char *map_ber)
 	map = malloc(sizeof(t_map *));
 	if (!map)
 		ft_error(MALLOC_FAILURE);
-	test = NULL;
+	// test = NULL;
 	map->moves = 0;
 	map->map = ber_to_str(map_ber);
 	map->map_size = get_size(map->map);
@@ -135,7 +136,10 @@ t_map	*init_map(char *map_ber)
 	map->is_valid = false;
 	test = copy_map(map);
 	if (fill_flood(test, test->map, test->player_pos->x, test->player_pos->y))
+	{
+		free_map(test);
 		return (map);
+	}
 	ft_error(REACH);
 	return(0);
 }

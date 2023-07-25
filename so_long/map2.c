@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:34:56 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/24 16:51:44 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/07/25 17:21:04 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_bool	is_step_possible(t_data *data, char **map, int x, int y)
 {
 	if (map[y][x] == WALL)
 		return (false);
-	if (map[y][x] == EMPTY || map[y][x] == EXIT)
+	if (map[y][x] == FLOOR || map[y][x] == EXIT)
 		return (true);
 	if (map[y][x] == COLL)
 	{

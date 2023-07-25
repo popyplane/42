@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   free.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/06 13:06:25 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/25 10:32:48 by bvieilhe         ###   ########.fr       */
+/*   Created: 2023/07/25 15:45:10 by bvieilhe          #+#    #+#             */
+/*   Updated: 2023/07/25 16:25:46 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-#define UTILS_H
+#ifndef FREE_H
+#define FREE_H
 
-char	**ber_to_str(char *map);
-char	*ft_itoa(int nbr);
+void	free_array(void	**array);
+void	free_mlx(t_mlx *mlx);
+void	free_map(t_map *map);
 
 #endif

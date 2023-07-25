@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:54:49 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/24 16:34:45 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/07/25 17:28:00 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # define MALLOC_FAILURE "MALLOC FAILURE : Last memory allocation failed"
 # define REACH "MAP NOT VALID : Ensure exit and collectible(s) to be reachable"
 # define UNK_DATA "MAP NOT VALID : The .ber map should only contains either (P), (E), (C), (0) or (1)"
+# define EX11 "X11 error"
+# define ETXTUR "Texture error"
+# define BAD_ARGS "BAD ARGUMENTS : Only the map name is necessary, neither more nor less"
 
 void	ft_error(char *msg);
 
