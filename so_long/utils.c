@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:06:08 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/28 14:52:28 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/08/03 19:48:29 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,25 @@
 char	**ber_to_str(char *map)
 {
 	char	buffer[10000];
-	char	*map_path;
-	char	*c;
+	char	c;
 	int		reader;
 	int		fd;
 	int		i;
 
-	c = malloc(sizeof (char));
-	map_path = ft_strjoin("maps/", map);
-	fd = open(map_path, O_RDONLY, 0777);
+	map = ft_strjoin("maps/", map);
+	fd = open(map, O_RDONLY, 0777);
 	if (fd == -1)
 		ft_error(OPEN);
 	reader = 1;
 	i = 0;
 	while (reader)
 	{
-		reader = read(fd, c, 1);
-		buffer[i] = *c;
+		reader = read(fd, &c, 1);
+		buffer[i] = c;
 		i++;
 	}
 	buffer[--i] = '\0';
+	free(map);
 	return (ft_split(ft_strdup(buffer), '\n'));
 }
 
@@ -105,23 +104,13 @@ void	free_init_err(t_mlx *mlx, char *err)
 	ft_error(err);
 }
 
-void init_map_bases(t_map *map)
+void	init_map_bases(t_map *map)
 {
 	map->map_size = get_size(map->map);
 	if (map->map_size->y == -1)
-		ft_error(RCTGL);										
+		ft_error(RCTGL);
 	map->data = get_data(map->map);
 	check_data(map->data);
 	map->exit = get_position(map->map, EXIT);
 	map->player_pos = get_position(map->map, PLAYER);
-}
-
-int	print_map(char **map, int size)
-{
-	int	i;
-	
-	i = -1;
-	while (++i < size)
-		ft_dprintf(1, "%s\n", map[i]);
-	return (1);
 }

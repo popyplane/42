@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 17:31:37 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/28 13:56:36 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/08/03 19:32:32 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ void	render_assets(t_mlx *mlx)
 		}
 	}
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->textures[4],
-						mlx->map->exit->x * TILE_SIZE,
-						mlx->map->exit->y * TILE_SIZE + SCORE_OFFSET);
+		mlx->map->exit->x * TILE_SIZE,
+		mlx->map->exit->y * TILE_SIZE + SCORE_OFFSET);
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->textures[3],
-						mlx->map->player_pos->x * TILE_SIZE,
-						mlx->map->player_pos->y * TILE_SIZE + SCORE_OFFSET);
+		mlx->map->player_pos->x * TILE_SIZE,
+		mlx->map->player_pos->y * TILE_SIZE + SCORE_OFFSET);
 }
 
 void	render_bg(t_mlx *mlx)
@@ -77,7 +77,7 @@ void	display_score(t_mlx *mlx)
 	char	*score_str;
 	int		i;
 	int		j;
-	
+
 	moves = ft_itoa(mlx->map->moves);
 	if (!moves)
 		ft_error(MALLOC_FAILURE);
@@ -93,7 +93,7 @@ void	display_score(t_mlx *mlx)
 			mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, i, j, 0x00000000);
 	}
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr,
-						10, 30, 0x00FF0000, score_str);
+		10, 30, 0x00FF0000, score_str);
 	free(score_str);
 }
 
@@ -127,5 +127,4 @@ void	init_window(t_mlx *mlx)
 	mlx_hook(
 		mlx->win_ptr, DestroyNotify, StructureNotifyMask, &ft_on_close, mlx);
 	mlx_loop(mlx->mlx_ptr);
-	free_mlx(mlx);
 }

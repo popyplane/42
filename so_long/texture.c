@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:29:25 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/28 13:51:19 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/08/03 19:42:41 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,6 @@ t_bool	load_textures(t_mlx *mlx)
 		}
 	}
 	return (true);
-}
-
-void	malloc_pos(t_map *map)
-{
-	map->map_size = malloc(sizeof(t_position));
-	if (!map->map_size)
-		ft_error(MALLOC_FAILURE);
-	map->player_pos = malloc(sizeof(t_position));
-	if (!map->player_pos)
-		ft_error(MALLOC_FAILURE);
-	map->exit = malloc(sizeof(t_position));
-	if (!map->exit)
-		ft_error(MALLOC_FAILURE);
 }
 
 t_data	*init_data(void)

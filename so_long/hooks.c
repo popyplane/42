@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:43:53 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/28 14:54:41 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/08/03 19:34:40 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ int	ft_on_keypress(int keysym, t_mlx *mlx)
 		ft_dprintf(1, "Total moves: %d\n", mlx->map->moves);
 		ft_on_close(mlx);
 	}
-	else if (mlx->map->map[mlx->map->player_pos->y][mlx->map->player_pos->x] == COLL)
+	else if (mlx->map->map[mlx->map->player_pos->y][mlx->map->player_pos->x]
+		== COLL)
 	{
 		--mlx->map->data->collectible;
 		mlx->map->map[mlx->map->player_pos->y][mlx->map->player_pos->x] = FLOOR;
@@ -66,6 +67,7 @@ int	ft_on_keypress(int keysym, t_mlx *mlx)
 int	ft_on_close(t_mlx *mlx)
 {
 	free_mlx(mlx);
+	free(mlx);
 	exit(0);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:33:30 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/20 15:02:49 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/08/03 18:42:25 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ char	**ft_split(char const *s, char c)
 	if (!list)
 		return (0);
 	ft_fill_list_with_strs(list, s, c);
+	free((char *)s);
 	return (list);
 }
 

@@ -6,12 +6,12 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:23:05 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/12 13:25:43 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/08/03 19:52:46 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_SPLIT_H
-#define FT_SPLIT_H
+# define FT_SPLIT_H
 
 char	**ft_split(char const *s, char c);
 

@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:58:17 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/26 11:33:16 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/08/03 19:38:16 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "print.h"
 #include "map.h"
 
-t_mlx   *ft_init(char *map_name)
+t_mlx	*ft_init(char *map_name)
 {
 	t_mlx	*mlx;
 
@@ -31,21 +31,10 @@ t_mlx   *ft_init(char *map_name)
 int	main(int argc, char *argv[])
 {
 	t_mlx	*mlx;
-	// char	**lst;
-	// if (argc == 2)
-
-	// lst = ft_split(argv[1], '.');
-	// while (*lst)
-	// {
-	// 	ft_dprintf(1, "%s\n", *lst);
-	// 	lst++;
-	// }
-	// return (0);
 
 	if (argc != 2)
 		ft_error(BAD_ARGS);
 	mlx = ft_init(argv[1]);
 	init_window(mlx);
 	return (0);
-	
 }

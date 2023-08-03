@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 14:26:19 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/20 14:40:54 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/08/03 19:41:30 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	ft_putnbr_fd(int nb, int fd)
 
 int	ft_putstr_fd(char *s, int fd)
 {
-	int bytes;
+	int	bytes;
 
 	bytes = 0;
 	while (*s)

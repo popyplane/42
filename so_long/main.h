@@ -6,7 +6,15 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:58:28 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/12 13:58:30 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/08/03 19:53:24 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef MAIN_H
+# define MAIN_H
+
+# include "structs.h"
+
+t_mlx	*ft_init(char *map_name);
+
+#endif

@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:56:43 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/24 17:00:57 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/08/03 19:42:33 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int const	s2_len = ft_strlen((char *)s2);
 
 	new_str = malloc((s1_len + s2_len + 1) * sizeof(char));
-	if (!new_str)   
+	if (!new_str)
 		return (NULL);
 	i = 0;
 	while (i < s1_len)

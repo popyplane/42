@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 15:44:59 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/28 11:31:45 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/08/03 19:33:55 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,22 @@ void	free_array(char	**array)
 void	free_map(t_map *map)
 {
 	free_array(map->map);
+	free(map->map);
 	free(map->data);
 	free(map->map_size);
 	free(map->exit);
 	free(map->player_pos);
-	free(map);
 }
 
 void	free_mlx(t_mlx *mlx)
 {
 	int	i;
-	
+
 	free_map(mlx->map);
+	free(mlx->map);
 	i = -1;
 	while (++i < 5)
-		free(mlx->textures[i]);
+		mlx_destroy_image(mlx->mlx_ptr, mlx->textures[i]);
 	if (mlx->mlx_ptr)
 	{
 		if (mlx->win_ptr)
@@ -48,5 +49,4 @@ void	free_mlx(t_mlx *mlx)
 		mlx_destroy_display(mlx->mlx_ptr);
 		free(mlx->mlx_ptr);
 	}
-	free(mlx);
 }

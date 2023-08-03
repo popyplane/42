@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 08:02:45 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/07/28 14:48:50 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/08/03 19:41:03 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 #include "utils.h"
 #include <stdlib.h>
 
-// get the size of the map and return it's values, return {-1, -1} if map isn't rectangular
+// get the size of the map and return it's values,
+// return {-1, -1} if map isn't rectangular
 t_position	*get_size(char **map)
 {
 	t_position	*size_max;
@@ -37,7 +38,7 @@ t_position	*get_size(char **map)
 	err->y = -1;
 	size_max->x = ft_strlen(*map);
 	size_max->y = 0;
-	while(map[size_max->y])
+	while (map[size_max->y])
 	{
 		if ((int)ft_strlen(map[size_max->y]) != size_max->x)
 		{
@@ -64,6 +65,9 @@ t_data	*get_data(char **map)
 		x = -1;
 		while (map[y][++x])
 		{
+			if (map[y][x] != 'P' && map[y][x] != 'C' && map[y][x] != 'E'
+				&& map[y][x] != '0' && map[y][x] != '1')
+				ft_error(UNK_DATA);
 			if (map[y][x] == 'P')
 				data->start++;
 			if (map[y][x] == 'C')
@@ -75,7 +79,7 @@ t_data	*get_data(char **map)
 	return (data);
 }
 
-void check_data(t_data *data)
+void	check_data(t_data *data)
 {
 	if (data->start > 1)
 		ft_error(EXCESS_P);
@@ -91,11 +95,11 @@ void check_data(t_data *data)
 
 t_position	*get_position(char **map, char token)
 {
-	t_position *pos;
+	t_position	*pos;
 
 	pos = malloc(sizeof(t_position));
 	if (!pos)
-		return(0);
+		return (0);
 	pos->y = 0;
 	while (map[pos->y])
 	{
@@ -110,7 +114,7 @@ t_position	*get_position(char **map, char token)
 	}
 	free(pos);
 	ft_error("The token hasn't been found");
-	return(0);
+	return (0);
 }
 
 t_map	*init_map(char *map_ber)
@@ -122,19 +126,18 @@ t_map	*init_map(char *map_ber)
 	map = malloc(sizeof(t_map));
 	if (!map)
 		ft_error(MALLOC_FAILURE);
-	malloc_pos(map);
 	map->moves = 0;
 	map->map = ber_to_str(map_ber);
 	dup_map = ber_to_str(map_ber);
 	init_map_bases(map);
 	flood = init_data();
-	if (fill_flood(map, map->player_pos->x, map->player_pos->y, flood))
-	{
-		free(flood);
-		free_array(map->map);
-		map->map = dup_map;
-		return (map);
-	}
-	ft_error(REACH);
-	return(0);
+	if (!fill_flood(map, map->player_pos->x, map->player_pos->y, flood))
+		ft_error(REACH);
+	free(flood);
+	free_array(map->map);
+	free(map->map);
+	map->map = dup_map;
+	if (!check_around_walls(map))
+		ft_error(SIDEWALL);
+	return (map);
 }
