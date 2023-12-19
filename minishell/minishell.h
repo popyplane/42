@@ -6,7 +6,7 @@
 /*   By: baptistevieilhescaze <baptistevieilhesc    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:56:30 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/12/07 15:47:23 by baptistevie      ###   ########.fr       */
+/*   Updated: 2023/12/18 13:28:28 by baptistevie      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef enum s_bool {
 typedef enum e_token_type {
 	T_STR,
 	T_PIPE,
-	// T_AND,
-	// T_OR,
+	T_AND,
+	T_OR,
 	T_REDIR_IN,
 	T_REDIR_OUT,
 	T_APPEND_OUT,
