@@ -6,7 +6,7 @@
 /*   By: baptistevieilhescaze <baptistevieilhesc    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:36:43 by baptistevie       #+#    #+#             */
-/*   Updated: 2023/12/18 18:19:05 by baptistevie      ###   ########.fr       */
+/*   Updated: 2023/12/19 17:06:14 by baptistevie      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,22 @@ typedef enum e_parse_err_type
 	E_SYNTAX
 }	t_parse_err_type;
 
-typedef struct s_io_node
+typedef struct s_io_list
 {
 	t_io_type			type;
 	char				*value;
-	char				**expanded_value;
-	int					here_doc;
+	char				**exp_value;
+	int					fd_heredoc;
 	struct s_io_node	*prev;
 	struct s_io_node	*next;
-}	t_io_node;
+}	t_io_list;
 
 typedef struct	s_node
 {
 	t_node_type		type;
 	t_io_list		*io_list;
 	char			*value;
-	char			**expanded_value;
+	char			**exp_value;
 	struct s_node	*left;
 	struct s_node	*right;
 }	t_node;
