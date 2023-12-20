@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baptistevieilhescaze <baptistevieilhesc    +#+  +:+       +#+        */
+/*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:57 by baptistevie       #+#    #+#             */
-/*   Updated: 2023/12/19 19:30:43 by baptistevie      ###   ########.fr       */
+/*   Updated: 2023/12/20 17:06:38 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 
-t_err	ft_check_exec(char *file, bool cmd)
+t_err	check_exec(char *file, bool cmd)
 {
 	if (!(*file))
 		return ((t_err){ENO_GENERAL, ERRMSG_NO_SUCH_FILE, file});
@@ -27,7 +27,7 @@ t_err	ft_check_exec(char *file, bool cmd)
 	return ((t_err){ENO_NOT_FOUND, ERRMSG_NO_SUCH_FILE, file});
 }
 
-t_err	ft_check_read(char *file)
+t_err	check_read(char *file)
 {
 	if (!(*file))
 		return ((t_err){ENO_GENERAL, ERRMSG_NO_SUCH_FILE, file});
@@ -40,7 +40,7 @@ t_err	ft_check_read(char *file)
 	return ((t_err){ENO_NOT_FOUND, ERRMSG_NO_SUCH_FILE, file});
 }
 
-t_err	ft_check_write(char *file)
+t_err	check_write(char *file)
 {
 	if (!(*file))
 		return ((t_err){ENO_GENERAL, ERRMSG_NO_SUCH_FILE, file});

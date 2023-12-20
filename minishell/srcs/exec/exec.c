@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baptistevieilhescaze <baptistevieilhesc    +#+  +:+       +#+        */
+/*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 10:55:18 by baptistevie       #+#    #+#             */
-/*   Updated: 2023/12/19 19:02:57 by baptistevie      ###   ########.fr       */
+/*   Updated: 2023/12/20 14:49:34 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static t_err_no	exec_pipe_child(t_node *tree)
 		exec_pipe_child(tree->left, fd, BRANCH_L);
 	else
 	{
-		(close(pfds[0]), close(pfds[1]),
+		(close(fd[0]), close(fd[1]),
 			waitpid(pid_l, &status, 0), waitpid(pid_r, &status, 0));
 		g_minishell.signint_child = false;
 		return (get_exit_status(status));
@@ -66,21 +66,21 @@ static t_err_no	exec_pipe_child(t_node *node, int fd[2], t_ast_branch branch)
 
 	if (branch == BRANCH_L)
 	{
-		close(pfds[0]);
-		dup2(pfds[1], STDOUT_FILENO);
-		close(pfds[1]);
+		close(fd[0]);
+		dup2(fd[1], STDOUT_FILENO);
+		close(fd[1]);
 	}
 	else if (branch == BRANCH_R)
 	{
-		close(pfds[1]);
-		dup2(pfds[0], STDIN_FILENO);
-		close(pfds[0]);
+		close(fd[1]);
+		dup2(fd[0], STDIN_FILENO);
+		close(fd[0]);
 	}
 	status = exec_node(node, true);
 	(clean_minishell(), exit(status));
 }
 
-t_err_no	ft_get_exit_status(t_err_no status)
+t_err_no	get_exit_status(t_err_no status)
 {
 	if (WIFSIGNALED(status))
 		return (128 + WTERMSIG(status));
