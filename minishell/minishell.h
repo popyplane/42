@@ -6,7 +6,7 @@
 /*   By: baptistevieilhescaze <baptistevieilhesc    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:56:30 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/12/18 13:28:28 by baptistevie      ###   ########.fr       */
+/*   Updated: 2023/12/21 17:12:20 by baptistevie      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ typedef enum e_token_type {
 	T_REDIR_IN,
 	T_REDIR_OUT,
 	T_APPEND_OUT,
-	T_HEREDOC_IN
+	T_HEREDOC_IN,
+	T_NL
 }	t_token_type;
 
 typedef struct s_token {

@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   garbage_collector.c                                :+:      :+:    :+:   */
+/*   pwd_builtin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baptistevieilhescaze <baptistevieilhesc    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/20 15:06:48 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/12/22 22:24:24 by baptistevie      ###   ########.fr       */
+/*   Created: 2023/12/23 00:02:29 by baptistevie       #+#    #+#             */
+/*   Updated: 2023/12/23 00:06:40 by baptistevie      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "clear.h"
+#include "builtin.h"
 
-void	    *garbage_collector(void *ptr, bool clean);
-
-static void	delete(void *ptr);
-
-void	*garbage_collector(void *ptr, bool clean)
+t_err_no	ft_pwd(void)
 {
-	static t_list	*garbage_list;
+	char	*cwd;
 
-	if (clean)
-	{
-		ft_lstclear(&garbage_list, delete);
-		return (NULL);
-	}
-	else
-	{
-		ft_lstadd_back(&garbage_list, ft_lstnew(ptr));
-		return (ptr);
-	}
-}
-
-static void	delete(void *ptr)
-{
-	free(ptr);
-	ptr = NULL;
+	cwd = NULL;
+	cwd = getcwd(cwd, 0);
+	if (!cwd)
+		return (ENO_GENERAL);
+	ft_putstr_fd(cwd, 1);
+	ft_putstr_fd("\n", 1);
+	return (ENO_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: baptistevieilhescaze <baptistevieilhesc    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 11:45:43 by baptistevie       #+#    #+#             */
-/*   Updated: 2023/12/19 19:03:48 by baptistevie      ###   ########.fr       */
+/*   Updated: 2023/12/21 16:32:50 by baptistevie      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_err_no	exec_cmd(t_node	*node, t_bool piped)
 		tmp_status = check_redir(node);
 		if (tmp_status != ENO_SUCCESS)
 			return (reset_stds(piped), ENO_GENERAL);
-		tmp_status = exec_builtin(node->exp_value); //to do
+		tmp_status = exec_builtin(node->exp_value);
 		return (reset_stds(piped), tmp_status);
 	}
 	else

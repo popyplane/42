@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   clean_minishell.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: baptistevieilhescaze <baptistevieilhesc    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:28:33 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/12/20 17:48:45 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2023/12/20 23:41:16 by baptistevie      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "clear.h"
 
-void	clean_minisell(void)
+void	clean_minishell(void)
 {
 	garbage_collector(NULL, true);
 	clear_ast(&g_minishell.ast);
