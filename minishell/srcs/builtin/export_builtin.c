@@ -6,14 +6,16 @@
 /*   By: baptistevieilhescaze <baptistevieilhesc    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:51:57 by bvieilhe          #+#    #+#             */
-/*   Updated: 2023/12/21 18:20:55 by baptistevie      ###   ########.fr       */
+/*   Updated: 2023/12/25 22:37:25 by baptistevie      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
+t_err_no	export_builtin(char **argv);
+
 static void	ft_export_list(void);
-static t_err_no	ft_export_err_msg(char *identifier);
+static t_err_no	export_err_msg(char *identifier);
 
 t_err_no	export_builtin(char **argv)
 {
@@ -22,10 +24,10 @@ t_err_no	export_builtin(char **argv)
 	char			*key;
 
 	exit_s = 0;
-	i = 1;
 	if (!argv[1])
 		return (export_list(), 0);
-	while (argv[i])
+	i = 0;
+	while (argv[++i])
 	{
 		if (check_key(argv[i]) == 0)
 			exit_s = export_err_msg(argv[i]);
@@ -37,9 +39,18 @@ t_err_no	export_builtin(char **argv)
 			else
 				update_envlst(key, extract_value(argv[i]), true);
 		}
-		i++;
 	}
 	return (exit_s);
+}
+
+t_bool	check_key(char *str)
+{
+	if (!ft_isalpha(*str) && *str != '_')
+		return (false);
+	while (*(++str) && *str != '=')
+		if (!ft_isalnum(*str) && *str != '_')
+			return (false);
+	return (true);
 }
 
 static void	export_list(void)
@@ -70,7 +81,7 @@ static void	export_list(void)
 }
 
 
-static t_err_no	ft_export_err_msg(char *identifier)
+static t_err_no	export_err_msg(char *identifier)
 {
 	ft_putstr_fd("minishell: export: `", 2);
 	ft_putstr_fd(identifier, 2);
