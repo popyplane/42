@@ -3,6 +3,8 @@
 
 # include "phoneBook.hpp"
 
+// CLASS CONTACT //////////////////////////////////////////
+
 class Contact
 {
 	private:
@@ -19,6 +21,8 @@ class Contact
 		bool			_setDarkestSecret();
 		bool			_setPhoneNumber();
 
+		std::string		_getTrimString(std::string str) const;
+
 
 	public:
 
@@ -26,18 +30,24 @@ class Contact
 		~Contact();
 
 		bool		setContact();
-		void		getContact();
+		void		displayShortContact(int idx) const;
+		void		displayContact() const;
+
+		std::string	getFirstName() const;
+		std::string	getlastName() const;
+		std::string	getNickname() const;
 };
+
+// CONTACT PRIVATE MEMBERS ////////////////////////////////
 
 bool	Contact::_setFirstName()
 {
 	std::string	buffer;
 
-	std::cout << "First Name: ";
-	std::cin >> buffer;
+	std::cout << GREEN << "First Name: " << ENDCOLOR;
+	std::getline(std::cin, buffer);
 	std::cout << std::endl;
 	this->_firstName = buffer;
-	std::cout << "First Name set as :" << this->_firstName << std::endl;
 	return (true);
 }
 
@@ -45,11 +55,10 @@ bool	Contact::_setLastName()
 {
 	std::string	buffer;
 
-	std::cout << "Last Name: ";
-	std::cin >> buffer;
+	std::cout << GREEN << "Last Name: " << ENDCOLOR;
+	std::getline(std::cin, buffer);
 	std::cout << std::endl;
 	this->_lastName = buffer;
-	std::cout << "Last Name set as :" << this->_lastName << std::endl;
 	return (true);
 }
 
@@ -57,11 +66,10 @@ bool	Contact::_setNickname()
 {
 	std::string	buffer;
 
-	std::cout << "Nickname: ";
-	std::cin >> buffer;
+	std::cout << GREEN << "Nickname: " << ENDCOLOR;
+	std::getline(std::cin, buffer);
 	std::cout << std::endl;
-	this->_nickname = buffer;
-	std::cout << "Nickname set as :" << this->_nickname << std::endl;
+	this->_nickname = buffer;	
 	return (true);
 }
 
@@ -69,11 +77,10 @@ bool	Contact::_setDarkestSecret()
 {
 	std::string	buffer;
 
-	std::cout << "Darkest Secret: ";
-	std::cin >> buffer;
+	std::cout << GREEN << "Darkest Secret: " << ENDCOLOR;
+	std::getline(std::cin, buffer);
 	std::cout << std::endl;
 	this->_darkestSecret = buffer;
-	std::cout << "Darkest Secret set as :" << this->_darkestSecret << std::endl;
 	return (true);
 }
 
@@ -81,23 +88,39 @@ bool	Contact::_setPhoneNumber()
 {
 	std::string	buffer;
 
-	std::cout << "Phone Number: ";
-	std::cin >> buffer;
+	std::cout << GREEN << "Phone Number: " << ENDCOLOR;
+	std::getline(std::cin, buffer);
 	std::cout << std::endl;
 	this->_phoneNumber = buffer;
-	std::cout << "Phone Number set as :" << this->_phoneNumber << std::endl;
 	return (true);
 }
 
-
-Contact::Contact()
+std::string		Contact::_getTrimString(std::string str) const
 {
-	std::cout << "Contact constructor called" << std::endl;
+	if (str.length() < 11)
+		str.resize(10, ' ');
+	else
+	{
+		str.resize(9);
+		str.push_back('.');
+	}
+	return (str);
 }
 
-Contact::~Contact()
+// CONTACT PUBLIC MEMBERS /////////////////////////////////
+
+void		Contact::displayShortContact(int idx) const
 {
-	std::cout << "Contact destructor called" << std::endl;
+	std::string	trimFirstName = _getTrimString(getFirstName());
+	std::string trimLastName = _getTrimString(getlastName());
+	std::string	trimNickame = _getTrimString(getNickname());
+
+	std::cout << YELLOW << idx + 1 << "         ";
+	std::cout << "|" << trimFirstName;
+	std::cout << "|" << trimLastName;
+	std::cout << "|" << trimNickame;
+	std::cout << "|" << ENDCOLOR << std::endl;
+	std::setw(10);
 }
 
 bool	Contact::setContact(void)
@@ -109,6 +132,39 @@ bool	Contact::setContact(void)
 		&& this->_setPhoneNumber())
 		return (true);
 	return (false);
+}
+
+void	Contact::displayContact() const
+{
+	std::cout << BLUE << "First Name : " << ENDCOLOR << YELLOW << this->_firstName << ENDCOLOR << std::endl;
+	std::cout << BLUE << "Last Name : " << ENDCOLOR << YELLOW << this->_lastName << ENDCOLOR << std::endl;
+	std::cout << BLUE << "Nickname : " << ENDCOLOR << YELLOW << this->_nickname << ENDCOLOR << std::endl;
+	std::cout << BLUE << "Darkest Secret : " << ENDCOLOR <<  YELLOW <<this->_darkestSecret << ENDCOLOR << std::endl;
+	std::cout << BLUE << "Phone Number : " << ENDCOLOR << YELLOW << this->_phoneNumber << ENDCOLOR << std::endl;
+	std::cout << std::endl;
+}
+
+std::string	Contact::getFirstName() const
+{
+	return (this->_firstName);
+}
+
+std::string	Contact::getlastName() const
+{
+	return (this->_lastName);
+}
+
+std::string	Contact::getNickname() const
+{
+	return (this->_nickname);
+}
+
+Contact::Contact(void)
+{
+}
+
+Contact::~Contact(void)
+{
 }
 
 #endif
