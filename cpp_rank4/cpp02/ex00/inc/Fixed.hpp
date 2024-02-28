@@ -9,7 +9,7 @@ using std::endl;
 class Fixed
 {
 	private :
-		int					_value;
+		int					_rawValue;
 		static const int	_fractionalPart = 8;
 
 	public :
