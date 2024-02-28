@@ -15,19 +15,36 @@ class Fixed
 
 	public :
 		Fixed( void );
+		Fixed( int const value );
+		Fixed( float const value );
+		Fixed( Fixed const & src );
 		~Fixed();
 
-		Fixed( int const value );									// new implementation
-		Fixed( float const value );									// new implementation
-		Fixed( Fixed const & src );
 		Fixed &		operator=( Fixed const & rhs );
 
-		float		toFloat( void ) const;							// new implementation
-		int			toInt( void ) const;							// new implementation
+		bool		operator>( Fixed const & rhs );
+		bool		operator<( Fixed const & rhs );
+		bool		operator>=( Fixed const & rhs );
+		bool		operator<=( Fixed const & rhs );
+		bool		operator==( Fixed const & rhs );
+		bool		operator!=( Fixed const & rhs );
+
+		Fixed &		operator+( Fixed const &rhs );
+		Fixed &		operator-( Fixed const &rhs );
+		Fixed &		operator*( Fixed const &rhs );
+		Fixed &		operator/( Fixed const &rhs );
+
+		static Fixed const &min(Fixed const &a, Fixed const &b);
+		static Fixed const &min(Fixed const &a, Fixed const &b);
+		static Fixed &min(Fixed &a, Fixed &b);
+		static Fixed &min(Fixed &a, Fixed &b);
+
+		float		toFloat( void ) const;
+		int			toInt( void ) const;
 		int			getRawBits( void ) const;
 		void		setRawBits( int const raw );
 };
 
-std::ostream &	operator<<(std::ostream & o, Fixed const & rhs);	// new implementation
+std::ostream &	operator<<(std::ostream & o, Fixed const & rhs);
 
 #endif
