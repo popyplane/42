@@ -19,21 +19,24 @@ using   std::cout;
 using   std::endl;
 using   std::string;
 
-Class   ClapTrap
+class   ClapTrap
 {
-    private:
-        string  _name;
-        int     _hitPoints = 10;
-        int     _energyPoints = 10;
-        int     _attackDamage = 0;
+	private:
+		string  _name;
+		int     _hitPoints = 10;
+		int     _energyPoints = 10;
+		int     _attackDamage = 0;
 
-    public:
-        ClapTrap( string name = "Bob");
-        ~ClapTrap();
+	public:
+		ClapTrap( string name = "Bob");
+		ClapTrap( ClapTrap const & src );
+		~ClapTrap();
 
-        void attack(const string& target);
-        void takeDamage(unsigned int amount);
-        void beRepaired(unsigned int amount);
+		ClapTrap &      operator=( ClapTrap const & rhs );
+
+		void		attack( const string& target );
+		void		takeDamage( unsigned int amount );
+		void		beRepaired( unsigned int amount );
 };
 
 #endif

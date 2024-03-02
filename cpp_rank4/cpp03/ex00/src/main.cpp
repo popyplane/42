@@ -10,3 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../inc/ClapTrap.hpp"
+
+int     main()
+{
+    ClapTrap    bob;
+    ClapTrap    bob2 = bob;
+    ClapTrap    tom("Tom");
+
+    tom.attack("bob");
+}
