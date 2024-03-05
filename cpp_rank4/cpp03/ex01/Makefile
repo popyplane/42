@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME			=	ClapTrap
+NAME			=	ScavTrap
 
 ############## Compilation & Flags ###########
 CXX				=	c++
@@ -19,13 +19,15 @@ STD_FLAG		=	-std=c++98
 
 ############## Include Dir ###########
 INC_DIR			=	inc/
-INC_FD			=	ClapTrap.hpp 
+INC_FD			=	ClapTrap.hpp \
+					ScavTrap.hpp
 INC				=	$(addprefix $(INC_DIR), $(INC_FD))
 
 ############## SRC Dirs & Files ##############
 SRCS_DIR		=	src/
 SRCS_FD			=	main.cpp \
-					ClapTrap.cpp 
+					ClapTrap.cpp \
+					ScavTrap.cpp
 
 SRCS			=	$(addprefix $(SRCS_DIR), $(SRCS_FD))
 

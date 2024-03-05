@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+         #
+#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/01 13:37:30 by bvieilhe          #+#    #+#              #
-#    Updated: 2024/03/01 13:37:32 by bvieilhe         ###   ########.fr        #
+#    Updated: 2024/03/05 17:10:56 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			=	ClapTrap
+NAME			=	FragTrap
 
 ############## Compilation & Flags ###########
 CXX				=	c++
@@ -19,20 +19,24 @@ STD_FLAG		=	-std=c++98
 
 ############## Include Dir ###########
 INC_DIR			=	inc/
-INC_FD			=	ClapTrap.hpp 
+INC_FD			=	ClapTrap.hpp \
+					ScavTrap.hpp \
+					FragTrap.hpp
 INC				=	$(addprefix $(INC_DIR), $(INC_FD))
 
 ############## SRC Dirs & Files ##############
 SRCS_DIR		=	src/
 SRCS_FD			=	main.cpp \
-					ClapTrap.cpp 
+					ClapTrap.cpp \
+					ScavTrap.cpp \
+					FragTrap.cpp
 
 SRCS			=	$(addprefix $(SRCS_DIR), $(SRCS_FD))
 
 
 ############## OBJS Dirs & Files #############
 OBJ_DIR			=	.obj
-OBJS			=	$(SRCS:$(SRCS_DIR)/%.c=$(OBJ_DIR)/%.o)
+OBJS			=	$(SRCS:$(SRCS_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 
 ############## Recipes #######################

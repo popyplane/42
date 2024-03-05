@@ -14,6 +14,7 @@
 # define  CLAPTRAP_HPP
 
 # include <iostream>
+# include <string>
 
 using   std::cout;
 using   std::endl;
@@ -29,7 +30,7 @@ using   std::string;
 
 class   ClapTrap
 {
-	private:
+	protected:
 		string  _name;
 		int     _hitPoints = 10;
 		int     _energyPoints = 10;
@@ -37,14 +38,23 @@ class   ClapTrap
 
 	public:
 		ClapTrap( string name = "Bob");
-		ClapTrap( ClapTrap const & src );
-		~ClapTrap();
+		explicit ClapTrap( ClapTrap const & src );
+		virtual ~ClapTrap();
 
 		ClapTrap &      operator=( ClapTrap const & rhs );
 
 		void		attack( const string& target );
 		void		takeDamage( unsigned int amount );
 		void		beRepaired( unsigned int amount );
+
+		string	getName( void ) const;
+		int		getHitPoints( void ) const;
+		int		getEnergyPoints( void ) const;
+		int		getAttackDamage( void ) const;
 };
+
+std::ostream &operator<<(std::ostream &out, ClapTrap const & clapTrap);
+
+# include "ScavTrap.hpp"
 
 #endif
