@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 15:23:31 by bvieilhe          #+#    #+#             */
-/*   Updated: 2024/03/06 16:05:31 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2024/03/06 22:19:24 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 WrongAnimal::WrongAnimal()
 {
-	cout
+	cout << RED
 		<< "WrongAnimal constructor"
-		<< endl;
+		<< ENDCOLOR << endl;
 }
 
 WrongAnimal::WrongAnimal( WrongAnimal const &rhs )
 {
 	*this = rhs;
-	cout
+	cout << RED
 		<< "WrongAnimal copy constructor"
-		<< endl;
+		<< ENDCOLOR << endl;
 
 }
 
 WrongAnimal::~WrongAnimal()
 {
-	cout
+	cout << RED
 		<< "WrongAnimal destructor"
-		<< endl;
+		<< ENDCOLOR << endl;
 }
 
 WrongAnimal	&WrongAnimal::operator=( WrongAnimal const &rhs )
@@ -43,9 +43,9 @@ WrongAnimal	&WrongAnimal::operator=( WrongAnimal const &rhs )
 
 void	WrongAnimal::makeSound( void ) const
 {
-	cout
+	cout << RED
 		<< "Wrong ?????????"
-		<< endl;
+		<< ENDCOLOR << endl;
 }
 
 string	WrongAnimal::getType() const

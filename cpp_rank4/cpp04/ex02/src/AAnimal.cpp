@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   AAnimal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,44 +10,44 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Animal.hpp"
+#include "../inc/AAnimal.hpp"
 
-Animal::Animal()
+AAnimal::AAnimal()
 {
-	cout
-		<< "Animal constructor"
-		<< endl;
+	cout << CYAN
+		<< "AAnimal constructor"
+		<< ENDCOLOR << endl;
 }
 
-Animal::Animal( Animal const &rhs )
+AAnimal::AAnimal( AAnimal const &rhs )
 {
 	*this = rhs;
-	cout
-		<< "Animal copy constructor"
-		<< endl;
+	cout << CYAN
+		<< "AAnimal copy constructor"
+		<< ENDCOLOR << endl;
 }
 
-Animal::~Animal()
+AAnimal::~AAnimal()
 {
-	cout
-		<< "Animal destructor"
-		<< endl;
+	cout << CYAN
+		<< "AAnimal destructor"
+		<< ENDCOLOR << endl;
 }
 
-Animal	&Animal::operator=( Animal const &rhs )
+AAnimal	&AAnimal::operator=( AAnimal const &rhs )
 {
 	this->_type = rhs.getType();
 	return (*this);
 }
 
-void	Animal::makeSound( void ) const
+void	AAnimal::makeSound( void ) const
 {
-	cout
+	cout << CYAN
 		<< "?????????"
-		<< endl;
+		<< ENDCOLOR << endl;
 }
 
-string	Animal::getType() const
+string	AAnimal::getType() const
 {
 	return (this->_type);
 }

@@ -3,12 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:31:54 by codespace         #+#    #+#             */
-/*   Updated: 2024/03/06 17:53:46 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/06 22:28:59 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
 #include "style.hpp"
 
@@ -25,3 +28,5 @@ class Brain
 
 		Brain     &operator=( Brain const &rhs );
 };
+
+#endif

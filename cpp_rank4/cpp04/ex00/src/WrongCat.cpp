@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 15:24:21 by bvieilhe          #+#    #+#             */
-/*   Updated: 2024/03/06 16:01:26 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2024/03/06 22:20:04 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 WrongCat::WrongCat()
 {
-	cout
+	cout << YELLOW
 		<< "WrongCat constructor"
-		<< endl;
+		<< ENDCOLOR << endl;
     this->_type = "WrongCat";
 }
 
 WrongCat::WrongCat( WrongCat const &rhs )
 {
-	cout
+	cout << YELLOW
 		<< "WrongCat copy constructor"
-		<< endl;
+		<< ENDCOLOR << endl;
 	*this = rhs;
 }
 
 WrongCat::~WrongCat()
 {
-	cout
+	cout << YELLOW
 		<< "WrongCat destructor"
-		<< endl;
+		<< ENDCOLOR << endl;
 }
 
 WrongCat	&WrongCat::operator=( WrongCat const &rhs )
@@ -43,7 +43,7 @@ WrongCat	&WrongCat::operator=( WrongCat const &rhs )
 
 void	WrongCat::makeSound( void ) const
 {
-	cout
+	cout << YELLOW
 		<< "Wrong Meow !!"
-		<< endl;
+		<< ENDCOLOR << endl;
 }

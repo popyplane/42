@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 14:51:53 by bvieilhe          #+#    #+#             */
-/*   Updated: 2024/03/06 15:38:34 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2024/03/06 22:22:48 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,5 @@ class Animal
 
 # include "Cat.hpp"
 # include "Dog.hpp"
-# include "WrongAnimal.hpp"
-# include "WrongCat.hpp"
 
 #endif

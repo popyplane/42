@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:37:02 by codespace         #+#    #+#             */
-/*   Updated: 2024/03/06 17:54:12 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/06 22:24:37 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 Brain::Brain()
 {
-	cout
+	cout << PURPLE
 		<< "Brain constructor"
-		<< endl;
+		<< ENDCOLOR << endl;
     _setIdeas();
 }
 
 Brain::Brain( Brain const &rhs )
 {
-	cout
+	cout << PURPLE
 		<< "Brain copy constructor"
-		<< endl;
+		<< ENDCOLOR << endl;
 	for(int i = 0; i < 100; ++i)
 		_ideas[i] = rhs._ideas[i];
 }
 
 Brain::~Brain()
 {
-	cout
+	cout << PURPLE
 		<< "Brain destructor"
-		<< endl;
+		<< ENDCOLOR << endl;
 }
 
 Brain     &Brain::operator=( Brain const &rhs )

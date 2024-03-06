@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 15:04:04 by bvieilhe          #+#    #+#             */
-/*   Updated: 2024/03/06 16:00:05 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2024/03/06 22:15:50 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 Animal::Animal()
 {
-	cout
+	cout << RED
 		<< "Animal constructor"
-		<< endl;
+		<< ENDCOLOR << endl;
 }
 
 Animal::Animal( Animal const &rhs )
 {
 	*this = rhs;
-	cout
+	cout << RED
 		<< "Animal copy constructor"
-		<< endl;
+		<< ENDCOLOR << endl;
 }
 
 Animal::~Animal()
 {
-	cout
+	cout << RED
 		<< "Animal destructor"
-		<< endl;
+		<< ENDCOLOR << endl;
 }
 
 Animal	&Animal::operator=( Animal const &rhs )
@@ -42,9 +42,9 @@ Animal	&Animal::operator=( Animal const &rhs )
 
 void	Animal::makeSound( void ) const
 {
-	cout
+	cout << RED
 		<< "?????????"
-		<< endl;
+		<< ENDCOLOR << endl;
 }
 
 string	Animal::getType() const

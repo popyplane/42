@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AAnimal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,25 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef AANIMAL_HPP
+# define AANIMAL_HPP
 
 #include "style.hpp"
 
-class Animal
+class AAnimal
 {
 	protected:
 		string	_type;
 	
 	public:
-		Animal();
-		Animal( Animal const &rhs );
-		virtual ~Animal();
+		AAnimal();
+		AAnimal( AAnimal const &rhs );
+		virtual ~AAnimal();
 
-		Animal	&operator=( Animal const &rhs );
+		AAnimal	&operator=( AAnimal const &rhs );
 
-		void	virtual makeSound( void ) const = 0;
-		string	virtual getType() const = 0;
+		void		virtual makeSound( void ) const = 0;
+		string		getType() const;
 };
 
 # include "Cat.hpp"

@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 15:12:29 by bvieilhe          #+#    #+#             */
-/*   Updated: 2024/03/06 16:04:45 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2024/03/06 22:17:48 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 Cat::Cat()
 {
-	cout
+	cout << YELLOW
 		<< "Cat constructor"
-		<< endl;
+		<< ENDCOLOR << endl;
     this->_type = "Cat";
 }
 
 Cat::Cat( Cat const &rhs )
 {
-	cout
+	cout << YELLOW
 		<< "Cat copy constructor"
-		<< endl;
+		<< ENDCOLOR << endl;
 	*this = rhs;
 }
 
 Cat::~Cat()
 {
-	cout
+	cout << YELLOW
 		<< "Cat destructor"
-		<< endl;
+		<< ENDCOLOR << endl;
 }
 
 Cat     &Cat::operator=( Cat const &rhs )
@@ -43,7 +43,7 @@ Cat     &Cat::operator=( Cat const &rhs )
 
 void	Cat::makeSound( void ) const
 {
-	cout
+	cout << YELLOW
 		<< "Meow !!"
-		<< endl;
+		<< ENDCOLOR << endl;
 }

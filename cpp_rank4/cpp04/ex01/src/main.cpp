@@ -6,40 +6,38 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 15:33:09 by bvieilhe          #+#    #+#             */
-/*   Updated: 2024/03/06 16:09:20 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2024/03/06 22:34:12 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Animal.hpp"
-#include "../inc/WrongAnimal.hpp"
 
 int main()
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
+	Animal const		*animals[4];
+
+	for (int i = 0; i < 4; i++)
+	{
+		if ( i % 2 )
+			animals[i] = new Dog();
+		else
+			animals[i] = new Cat();
+	}
+	for (int i = 0; i < 4; i++)
+		delete animals[i];
 
 	cout << "-------------------------------------" << endl;
 
-	const WrongAnimal* wrongMeta = new WrongAnimal();
-	const WrongAnimal* a = new WrongCat();
-	std::cout << a->getType() << " " << std::endl;
-	a->makeSound(); //will output the WrongAnimal sound!
-	wrongMeta->makeSound();
+	Cat *cat = new Cat();
+	Dog *dog = new Dog();
 	
-	cout << "-------------------------------------" << endl;
+	Cat *copyCat = new Cat(*cat);
+	Dog *copyDog = new Dog();
 
-	delete i;
-	delete j;
-	delete meta;
-	delete a;
-	delete wrongMeta;
+	delete cat;
+	delete dog;
+	delete copyCat;
+	delete copyDog;
 
-	
 	return 0;
 }
