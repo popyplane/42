@@ -3,18 +3,30 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#    By: baptistevieilhescaze <baptistevieilhesc    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/21 15:17:47 by codespace         #+#    #+#              #
-#    Updated: 2024/04/18 09:29:47 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/18 12:55:52 by baptistevie      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	cub3D
 B_NAME		=	cub3D_bonus
 
-CFLAGS		=	-Wall -Wextra -Werror -Ilibft -Imlx
-MXFLAGS		=	-Lmlx -lmlx -framework OpenGL -framework AppKit
+CFLAGS		=	#-Wall -Wextra -Werror
+
+ifeq ($(shell uname), Linux)
+	INCLUDES = -I/usr/include -Imlx -Ilibft
+else
+	INCLUDES = -I/opt/X11/include -Imlx -Ilibft
+endif
+
+ifeq ($(shell uname), Linux)
+	MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11 -lm
+else
+	MLX_FLAGS = -Lmlx -lmlx -L/usr/X11/lib -lXext -lX11 -framework OpenGL -framework AppKit
+endif
+
 CC			=	cc
 RM			=	rm -rf
 
@@ -46,16 +58,16 @@ OBJS		=	$(SRCS:.c=.o)
 
 .c.o		:
 				@echo $(ITALIC)$(GRAY) "     - Making $<..." $(NONE)
-				@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+				@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) $(INCLUDES)
 
 all			:	$(NAME)
 
-$(NAME)		:	CFLAGS += -Iinc
+# $(NAME)		:	CFLAGS += -Iinc
 $(NAME)		:	$(OBJS)
 				@make -C libft/
 				@make -C mlx/
 				@echo $(ITALIC)$(GRAY) "     - Compiling $(NAME)..." $(NONE)
-				@$(CC) $(CFLAGS) $(MXFLAGS) -Llibft -lft $(OBJS) -o $(NAME)
+				@$(CC) $(CFLAGS) $(MLX_FLAGS) -Llibft -lft $(OBJS) -o $(NAME)
 				@echo $(GREEN)"- Compiled -"$(NONE)
 
 clean		:

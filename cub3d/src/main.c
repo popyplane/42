@@ -3,20 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: baptistevieilhescaze <baptistevieilhesc    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:36:50 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/16 13:00:49 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/18 12:56:15 by baptistevie      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/includes.h"
+// #include "../inc/includes.h"
+#include "mlx.h"
 
 int main()
 {
-    t_mlx   *mlx = 0;
+    void	*mlx;
+	void	*mlx_win;
 
-    mlx->mlx_ptr = mlx_init();
-    mlx->window_ptr = mlx_new_window(mlx->mlx_ptr, 1000, 100, "test");
+	mlx = mlx_init();
+    if (!mlx)
+        return (1);
+	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
+	mlx_loop(mlx);
+    
     return (0);
 }
