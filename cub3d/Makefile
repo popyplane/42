@@ -3,85 +3,57 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: baptistevieilhescaze <baptistevieilhesc    +#+  +:+       +#+         #
+#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/21 15:17:47 by codespace         #+#    #+#              #
-#    Updated: 2024/04/18 12:55:52 by baptistevie      ###   ########.fr        #
+#    Created: 2022/11/11 21:43:09 by herbie            #+#    #+#              #
+#    Updated: 2024/05/16 13:43:43 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	cub3D
-B_NAME		=	cub3D_bonus
+NAME = cub3d
 
-CFLAGS		=	#-Wall -Wextra -Werror
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
 
 ifeq ($(shell uname), Linux)
-	INCLUDES = -I/usr/include -Imlx -Ilibft
+	INCLUDES = -I/usr/include -Imlx
 else
-	INCLUDES = -I/opt/X11/include -Imlx -Ilibft
+	INCLUDES = -I/opt/X11/include -Imlx
 endif
 
+RM = rm
+RMFLAG = -f
+
+MLX_DIR = ./mlx
+MLX_LIB = $(MLX_DIR)/libmlx_$(UNAME).a
 ifeq ($(shell uname), Linux)
 	MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11 -lm
 else
 	MLX_FLAGS = -Lmlx -lmlx -L/usr/X11/lib -lXext -lX11 -framework OpenGL -framework AppKit
-endif
+endif 
 
-CC			=	cc
-RM			=	rm -rf
+SRCS = src/main.c
 
-NONE		=	'\033[0m'
-RED			=	'\033[0;31m'
-GREEN		=	'\033[32m'
-GRAY		=	'\033[2;37m'
-ITALIC		=	'\033[3m'
+OBJS = $(SRCS:.c=.o)
 
-# -------------------------------- MANDATORY --------------------------------- #
+all: $(MLX_LIB) $(NAME)
 
-_LIBCUB		=	
-LIBCUB		=	$(addprefix libcub/, $(_LIBCUB))
+.c.o:
+	$(CC) $(CFLAGS) -c -o $@ $< $(INCLUDES)
 
-_UTILS		=	
-UTILS		=	$(addprefix utils/, $(_UTILS))
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS)
 
-_PARSING	=	
-PARSING		=	$(addprefix parsing/, $(_PARSING))
+$(MLX_LIB):
+	@make -C $(MLX_DIR)
 
-_RENDERING	=	
-RENDERING	=	$(addprefix rendering/, $(_RENDERING))
+clean:
+	$(RM) $(RMFLAG) $(OBJS)
 
-_SRCS		=	$(LIBCUB) $(UTILS) $(PARSING) $(RENDERING)
-SRCS		=	$(addprefix src/, $(_SRCS)) src/main.c
-OBJS		=	$(SRCS:.c=.o)
+fclean: clean
+	$(RM) $(RMFLAG) $(NAME)
+	if [ -d "./mlx" ]; then make -C $(MLX_DIR) clean; fi
 
-# -------------------------------- RECIPE ------------------------------------ #
+re: fclean all
 
-.c.o		:
-				@echo $(ITALIC)$(GRAY) "     - Making $<..." $(NONE)
-				@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) $(INCLUDES)
-
-all			:	$(NAME)
-
-# $(NAME)		:	CFLAGS += -Iinc
-$(NAME)		:	$(OBJS)
-				@make -C libft/
-				@make -C mlx/
-				@echo $(ITALIC)$(GRAY) "     - Compiling $(NAME)..." $(NONE)
-				@$(CC) $(CFLAGS) $(MLX_FLAGS) -Llibft -lft $(OBJS) -o $(NAME)
-				@echo $(GREEN)"- Compiled -"$(NONE)
-
-clean		:
-				@echo $(ITALIC)$(GRAY) "     - Removing object files..." $(NONE)
-				@$(RM) $(OBJS) $(B_OBJS)
-				@make clean -C libft/
-				@make clean -C mlx/
-
-fclean		:	clean
-				@echo $(ITALIC)$(GRAY) "     - Removing $(NAME)..." $(NONE)
-				@$(RM) $(NAME) $(B_NAME)
-				@make fclean -C libft/
-				@make fclean -C mlx/
-
-re			:	fclean all
-
-.PHONY		:	all clean fclean re
+.PHONY: all clean run fclean re 

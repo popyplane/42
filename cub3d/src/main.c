@@ -3,26 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baptistevieilhescaze <baptistevieilhesc    +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:36:50 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/18 12:56:15 by baptistevie      ###   ########.fr       */
+/*   Updated: 2024/05/29 17:20:40 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../inc/includes.h"
-#include "mlx.h"
+#include <stdlib.h>
+#include "../mlx/mlx.h"
 
-int main()
+
+int main(void)
 {
-    void	*mlx;
-	void	*mlx_win;
+    void	*mlx_ptr;
+    void	*win_ptr;
 
-	mlx = mlx_init();
-    if (!mlx)
-        return (1);
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
-    
-    return (0);
+    mlx_ptr = mlx_init();
+    win_ptr = mlx_new_window(mlx_ptr, 600, 300, "My first window!");
+    mlx_destroy_window(mlx_ptr, win_ptr);
+    mlx_destroy_display(mlx_ptr);
+    free(mlx_ptr);
 }
