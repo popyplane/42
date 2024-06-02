@@ -6,22 +6,39 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:36:50 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/29 17:20:40 by codespace        ###   ########.fr       */
+/*   Updated: 2024/06/02 15:32:50 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "../mlx/mlx.h"
+#include "cub3d.h"
 
+/*********************** TESTING FUNCTIONS *******************/
 
-int main(void)
+void    print_map(t_map *map)
 {
-    void	*mlx_ptr;
-    void	*win_ptr;
+    int i;
 
-    mlx_ptr = mlx_init();
-    win_ptr = mlx_new_window(mlx_ptr, 600, 300, "My first window!");
-    mlx_destroy_window(mlx_ptr, win_ptr);
-    mlx_destroy_display(mlx_ptr);
-    free(mlx_ptr);
+    i = 0;
+    while (i < map->heigh)
+    {
+        ft_printf(map->map[i]);
+    }
+}
+
+
+/************************** MAIN *****************************/
+
+
+int main(int ac, char **av)
+{
+    t_map   *map;
+
+    if (ac == 2)
+    {
+        map = get_map(av[1]);
+        print_map(map);
+    }
+
+
+    return (1);
 }

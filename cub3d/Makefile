@@ -5,55 +5,57 @@
 #                                                     +:+ +:+         +:+      #
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/11 21:43:09 by herbie            #+#    #+#              #
-#    Updated: 2024/05/16 13:43:43 by codespace        ###   ########.fr        #
+#    Created: 2024/06/01 12:45:26 by codespace         #+#    #+#              #
+#    Updated: 2024/06/02 15:27:15 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3d
+NAME	=		cub3D
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
+SRCS_FILES	=	get_map.c \
+				get_map_utils.c \
+				main.c
 
-ifeq ($(shell uname), Linux)
-	INCLUDES = -I/usr/include -Imlx
-else
-	INCLUDES = -I/opt/X11/include -Imlx
-endif
+INC_FILES	= cub3d.h
 
-RM = rm
-RMFLAG = -f
+SRCS	=	$(addprefix src/, $(SRCS_FILES))
 
-MLX_DIR = ./mlx
-MLX_LIB = $(MLX_DIR)/libmlx_$(UNAME).a
-ifeq ($(shell uname), Linux)
-	MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11 -lm
-else
-	MLX_FLAGS = -Lmlx -lmlx -L/usr/X11/lib -lXext -lX11 -framework OpenGL -framework AppKit
-endif 
+INCS	=	$(addprefix inc/, $(INC_FILES))
 
-SRCS = src/main.c
+CC		=	clang
 
-OBJS = $(SRCS:.c=.o)
+CFLAGS	=	-Wall -Wextra -Werror -I./inc -g3
 
-all: $(MLX_LIB) $(NAME)
+INCLUDES	= -I. -Imlx/.
 
-.c.o:
-	$(CC) $(CFLAGS) -c -o $@ $< $(INCLUDES)
+LIB		= -Lmlx -lmlx -lXext -lX11 -Llibft -lft -lm
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS)
+OBJS_FILES	=	$(SRCS_FILES:%.c=%.o)
 
-$(MLX_LIB):
-	@make -C $(MLX_DIR)
+OBJS	=		$(addprefix objs/, $(OBJS_FILES))
 
-clean:
-	$(RM) $(RMFLAG) $(OBJS)
+DEP		=		$(OBJS:%.o=%.d)
 
-fclean: clean
-	$(RM) $(RMFLAG) $(NAME)
-	if [ -d "./mlx" ]; then make -C $(MLX_DIR) clean; fi
+all		:		$(NAME)
 
-re: fclean all
+$(NAME)	:	$(OBJS)
+	make -C libft
+	make -C mlx
+	$(CC) $(CFLAGS) $(INCLUDES) -o $(NAME) $(OBJS) $(LIB)
 
-.PHONY: all clean run fclean re 
+clean	:
+	make -C libft fclean
+	make -C mlx clean
+	rm -rf $(OBJS) $(DEP)
+	rm -rf objs/
+
+fclean	:	clean
+	rm -rf $(NAME)
+
+re		:	fclean all
+
+objs/%.o	: src/%.c $(INCS)
+	mkdir -p objs
+	$(CC) $(CFLAGS) -MMD -o $@ -c $<
+
+.PHONY: all clean fclean re

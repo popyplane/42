@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 14:25:48 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/30 15:42:24 by codespace        ###   ########.fr       */
+/*   Updated: 2024/06/01 13:57:03 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,5 @@ void	get_map_line(t_map *map, char *line, int *row)
 		i++; 
 	}
 	map->map[*row][i] = '\0';
-	*row++;
+	(*row)++;
 }
