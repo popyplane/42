@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:58:56 by codespace         #+#    #+#             */
-/*   Updated: 2024/06/01 13:49:09 by codespace        ###   ########.fr       */
+/*   Updated: 2024/06/04 08:57:12 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 
 /********** get_map.c **************/
 t_map	*get_map(char *path);
-void	init_map(t_map *map);
+t_map	*init_map(void);
 void	get_map_dim(t_map *map, char *path);
 
 /********** get_map_utils.c ********/

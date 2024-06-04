@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:36:50 by codespace         #+#    #+#             */
-/*   Updated: 2024/06/02 15:32:50 by codespace        ###   ########.fr       */
+/*   Updated: 2024/06/04 09:15:38 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ void    print_map(t_map *map)
     while (i < map->heigh)
     {
         ft_printf(map->map[i]);
+        i++;
     }
+    ft_printf("\n");
 }
 
 
@@ -31,12 +33,12 @@ void    print_map(t_map *map)
 
 int main(int ac, char **av)
 {
-    t_map   *map;
+    t_map   map;
 
     if (ac == 2)
     {
-        map = get_map(av[1]);
-        print_map(map);
+        map = *(get_map(av[1]));
+        print_map(&map);
     }
 
 

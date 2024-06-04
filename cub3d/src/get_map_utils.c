@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 14:25:48 by codespace         #+#    #+#             */
-/*   Updated: 2024/06/01 13:57:03 by codespace        ###   ########.fr       */
+/*   Updated: 2024/06/04 09:07:51 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	get_map_line(t_map *map, char *line, int *row)
 {
 	int	i;
 
+	map->map[*row] = malloc((map->width + 1) * sizeof(char)); // still need a garbage collector
+	// if !map->map[*row] ......
 	i = 0;
 	while (i < map->width) // i or i+1 to handle the '\n' ?
 	{
