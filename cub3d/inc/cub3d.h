@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:58:56 by codespace         #+#    #+#             */
-/*   Updated: 2024/06/06 12:51:12 by codespace        ###   ########.fr       */
+/*   Updated: 2024/06/06 13:11:58 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	get_map_line(t_map *map, char *line, int *row);
 
 /************* error.c *************/
 void    ft_error(char *msg);
+void	*garbage_collector(void *ptr, bool clean);
 
 
 
