@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:58:56 by codespace         #+#    #+#             */
-/*   Updated: 2024/06/04 08:57:12 by codespace        ###   ########.fr       */
+/*   Updated: 2024/06/06 12:51:12 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ bool	is_texture_line(char *line);
 bool	is_map_line(char *line);
 void	get_texture_line(t_map *map, char *line);
 void	get_map_line(t_map *map, char *line, int *row);
+
+/************* error.c *************/
+void    ft_error(char *msg);
 
 
 
