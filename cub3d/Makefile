@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/01 12:45:26 by codespace         #+#    #+#              #
-#    Updated: 2024/06/02 15:27:15 by codespace        ###   ########.fr        #
+#    Updated: 2024/06/06 15:17:47 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME	=		cub3D
 
 SRCS_FILES	=	get_map.c \
 				get_map_utils.c \
+				error.c \
 				main.c
 
 INC_FILES	= cub3d.h
