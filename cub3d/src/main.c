@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:36:50 by codespace         #+#    #+#             */
-/*   Updated: 2024/06/04 09:15:38 by codespace        ###   ########.fr       */
+/*   Updated: 2024/06/06 12:38:02 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,16 @@ void    print_map(t_map *map)
     ft_printf("\n");
 }
 
+void    print_texture(t_texture *texture)
+{
+    ft_printf("NO = %s", texture->north_wall);
+    ft_printf("SO = %s", texture->south_wall);
+    ft_printf("EA = %s", texture->east_wall);
+    ft_printf("WE = %s", texture->west_wall);
+    ft_printf("C = %s", texture->ceiling);
+    ft_printf("F = %s", texture->floor);
+}
+
 
 /************************** MAIN *****************************/
 
@@ -39,6 +49,7 @@ int main(int ac, char **av)
     {
         map = *(get_map(av[1]));
         print_map(&map);
+        print_texture(map.texture);
     }
 
 
