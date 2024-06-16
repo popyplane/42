@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: baptistevieilhescaze <baptistevieilhesc    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:58:56 by codespace         #+#    #+#             */
-/*   Updated: 2024/06/16 10:11:13 by codespace        ###   ########.fr       */
+/*   Updated: 2024/06/16 12:46:45 by baptistevie      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 /************* lib ******************/
 # include <stdbool.h>
 # include <stdlib.h>
+# include <fcntl.h>
 # include "../libft/libft.h"
 
 /*********** minilibx ***************/
