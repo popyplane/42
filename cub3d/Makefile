@@ -6,7 +6,7 @@
 #    By: baptistevieilhescaze <baptistevieilhesc    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/01 12:45:26 by codespace         #+#    #+#              #
-#    Updated: 2024/06/13 14:31:15 by baptistevie      ###   ########.fr        #
+#    Updated: 2024/06/16 17:36:17 by baptistevie      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,6 +89,7 @@ LIBFT_FLAGS	= -Llibft -lft
 SRCS_FILES	=	get_map.c \
 				get_map_utils.c \
 				error.c \
+				hooks.c \
 				main.c
 
 INC_FILES	= cub3d.h

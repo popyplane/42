@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: baptistevieilhescaze <baptistevieilhesc    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:40:47 by codespace         #+#    #+#             */
-/*   Updated: 2024/06/02 16:03:20 by codespace        ###   ########.fr       */
+/*   Updated: 2024/06/16 17:24:22 by baptistevie      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 typedef struct s_mlx
 {
 	void	*mlx_ptr;
-	void	*window_ptr;
+	void	*win_ptr;
 }	t_mlx;
 
 typedef struct s_texture
