@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:36:50 by codespace         #+#    #+#             */
-/*   Updated: 2024/06/11 11:09:57 by codespace        ###   ########.fr       */
+/*   Updated: 2024/06/16 09:31:20 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,13 @@ int main(void)
 
 	mlx_ptr = mlx_init();
 	if (mlx_ptr == NULL)
-		return (write(1, "init error\n", 11), MLX_ERROR);
+		return (MLX_ERROR);
 	win_ptr = mlx_new_window(mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "My first window!");
 	if (win_ptr == NULL)
 	{
 		free(win_ptr);
-		return (write(1, "new window error\n", 11), MLX_ERROR);
+		return (MLX_ERROR);
 	}
-	write(1, "is the window open?\n", 20);
 	while (1)
 		;
 	mlx_destroy_window(mlx_ptr, win_ptr);

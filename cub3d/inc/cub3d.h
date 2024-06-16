@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:58:56 by codespace         #+#    #+#             */
-/*   Updated: 2024/06/06 13:11:58 by codespace        ###   ########.fr       */
+/*   Updated: 2024/06/16 10:11:13 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 /*********** minilibx ***************/
 # include "../mlx/mlx.h"
-# include "../mlx/mlx_int.h"
+// # include "../mlx/mlx_int.h"
 
 /************* inc ******************/
 # include "struct.h"
