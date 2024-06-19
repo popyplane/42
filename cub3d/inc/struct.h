@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:40:47 by codespace         #+#    #+#             */
-/*   Updated: 2024/06/19 17:38:04 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2024/06/19 18:33:26 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_mlx
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	t_img	*img;
+
 }	t_mlx;
 
 typedef struct s_texture
@@ -51,6 +51,7 @@ typedef struct s_game
 {
 	t_mlx	*mlx;
 	t_map	*map;
+	t_img	*img;
 }	t_game;
 
 #endif

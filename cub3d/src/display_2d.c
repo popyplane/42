@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 16:34:34 by bvieilhe          #+#    #+#             */
-/*   Updated: 2024/06/19 17:37:15 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2024/06/19 18:33:51 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	draw_tile(int x, int y, int color, t_game *data)
 		j = 0;
 		while (j < tile_height * (y + 1))
 		{
-			img_pix_put(data->mlx->img, i, j, color);
+			img_pix_put(data->img, i, j, color);
 			j++;
 		}
 		i++;

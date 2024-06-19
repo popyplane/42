@@ -6,7 +6,7 @@
 #    By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/01 12:45:26 by codespace         #+#    #+#              #
-#    Updated: 2024/06/19 16:37:13 by bvieilhe         ###   ########.fr        #
+#    Updated: 2024/06/19 18:48:36 by bvieilhe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@
 NAME = cub3d
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 
 RM = rm
 RMFLAG = -f

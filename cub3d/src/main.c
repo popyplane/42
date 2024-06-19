@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:36:50 by codespace         #+#    #+#             */
-/*   Updated: 2024/06/19 16:15:25 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2024/06/19 18:47:48 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,28 +73,39 @@ void	render_background(t_img *img, int color)
     }
 }
 
-int	main(void)
+int	main(int ac, char **av)
 {
-    t_mlx	data;
+    t_game	*data;
 
-    data.mlx_ptr = mlx_init();
-    if (data.mlx_ptr == NULL)
+    data = NULL;
+    if (ac != 2)
+        return (0);
+
+    data->mlx->mlx_ptr = mlx_init();
+    if (data->mlx->mlx_ptr == NULL)
         return (MLX_ERROR);
-    data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "My first window!");
-    if (data.win_ptr == NULL)
+    data->mlx->win_ptr = mlx_new_window(data->mlx->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d");
+    if (data->mlx->win_ptr == NULL)
     {
-        free(data.win_ptr);
+        free(data->mlx->win_ptr);
         return (MLX_ERROR);
     }
 
-    /* Setup hooks */ 
-    mlx_loop_hook(data.mlx_ptr, &handle_no_event, &data);
-    mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data); /* ADDED */
-    mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &handle_keyrelease, &data); /* CHANGED */
+    data->map = get_map(av[1]);
+    data->img->mlx_img = mlx_new_image(data->mlx->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
+	data->img->addr = mlx_get_data_addr(data->img->mlx_img, &data->img->bpp,
+			&data->img->line_len, &data->img->endian);
 
-    mlx_loop(data.mlx_ptr);
+    /* Setup hooks */ 
+    mlx_loop_hook(data->mlx->mlx_ptr, &render_2d, &data);
+    mlx_hook(data->mlx->win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data); /* ADDED */
+    mlx_hook(data->mlx->win_ptr, KeyRelease, KeyReleaseMask, &handle_keyrelease, &data); /* CHANGED */
+
+    mlx_loop(data->mlx->mlx_ptr);
 
     /* we will exit the loop if there's no window left, and execute this code */
-    mlx_destroy_display(data.mlx_ptr);
-    free(data.mlx_ptr);
+    mlx_destroy_display(data->mlx->mlx_ptr);
+    free(data->mlx->mlx_ptr);
+
+    return (1);
 }

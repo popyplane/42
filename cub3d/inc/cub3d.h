@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:58:56 by codespace         #+#    #+#             */
-/*   Updated: 2024/06/19 17:26:17 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2024/06/19 18:44:57 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,7 @@ void	img_pix_put(t_img *img, int x, int y, int color);
 void	draw_tile(int x, int y, int color, t_game *data);
 void	draw_map(t_game *data);
 
+/********** display_2d.c *************/
+int render_2d(t_game *data);
 
 #endif
