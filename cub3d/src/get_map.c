@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:27:29 by codespace         #+#    #+#             */
-/*   Updated: 2024/06/06 13:14:13 by codespace        ###   ########.fr       */
+/*   Updated: 2024/06/19 17:38:40 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ t_map	*get_map(char *path)
 	t_map	*map;
 
 	map = init_map();
-	map->heigh++;
+	map->height++;
 	get_map_dim(map, path);
-	map->map = malloc(sizeof(char *) * map->heigh);
+	map->map = malloc(sizeof(char *) * map->height);
 	if (!map->map)
 		ft_error("[get_map(...)] : map->map malloc failed");
 	garbage_collector(map->map, false);
@@ -53,7 +53,7 @@ t_map	*init_map(void)
 	if (!map)
 		ft_error("[init_map(...)] : t_map malloc failed");
 	garbage_collector(map, false);
-	map->heigh = 0;
+	map->height = 0;
 	map->width = 0;
 	map->texture = malloc(sizeof(t_texture));
 	if (!map->texture)
@@ -75,7 +75,7 @@ void	get_map_dim(t_map *map, char *path)
 	{
 		if (*line != '\n' && is_map_line(line))
 		{
-			(map->heigh)++;
+			(map->height)++;
 			if ((int)ft_strlen(line) > map->width)
 				map->width = ft_strlen(line);
 		}

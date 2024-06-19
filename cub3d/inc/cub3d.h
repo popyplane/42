@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baptistevieilhescaze <baptistevieilhesc    +#+  +:+       +#+        */
+/*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:58:56 by codespace         #+#    #+#             */
-/*   Updated: 2024/06/16 17:35:07 by baptistevie      ###   ########.fr       */
+/*   Updated: 2024/06/19 17:26:17 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 
 /************* inc ******************/
 # include "struct.h"
+# include "define.h"
 
 
 /**                 FUNCTIONS                   **/
@@ -45,13 +46,18 @@ void	get_map_line(t_map *map, char *line, int *row);
 void    ft_error(char *msg);
 void	*garbage_collector(void *ptr, bool clean);
 
-/************* error.c *************/
+/************* hooks.c *************/
 int	handle_no_event(void *data);
 int	handle_input(int keysym, t_mlx *data);
 int	handle_keypress(int keysym, t_mlx *data);
 int	handle_keyrelease(int keysym, void *data);
 
+/************* img.c *************/
+void	img_pix_put(t_img *img, int x, int y, int color);
 
+/********** display_2d.c *************/
+void	draw_tile(int x, int y, int color, t_game *data);
+void	draw_map(t_game *data);
 
 
 #endif

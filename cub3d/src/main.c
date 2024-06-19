@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baptistevieilhescaze <baptistevieilhesc    +#+  +:+       +#+        */
+/*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:36:50 by codespace         #+#    #+#             */
-/*   Updated: 2024/06/16 17:41:49 by baptistevie      ###   ########.fr       */
+/*   Updated: 2024/06/19 16:15:25 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,24 @@
 //     return (1);
 // }
 
-#define WINDOW_WIDTH 600
-#define WINDOW_HEIGHT 300
-
 #define MLX_ERROR 1
+
+void	render_background(t_img *img, int color)
+{
+    int	i;
+    int	j;
+
+    i = 0;
+    while (i < WINDOW_HEIGHT)
+    {
+        j = 0;
+        while (j < WINDOW_WIDTH)
+        {
+            img_pix_put(img, j++, i, color);
+        }
+        ++i;
+    }
+}
 
 int	main(void)
 {

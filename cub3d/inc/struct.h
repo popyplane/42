@@ -3,20 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baptistevieilhescaze <baptistevieilhesc    +#+  +:+       +#+        */
+/*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:40:47 by codespace         #+#    #+#             */
-/*   Updated: 2024/06/16 17:24:22 by baptistevie      ###   ########.fr       */
+/*   Updated: 2024/06/19 17:38:04 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
+typedef struct s_img
+{
+    void	*mlx_img;
+    char	*addr;
+    int		bpp;
+    int		line_len;
+    int		endian;
+}	t_img;
+
 typedef struct s_mlx
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	t_img	*img;
 }	t_mlx;
 
 typedef struct s_texture
@@ -32,10 +42,15 @@ typedef struct s_texture
 typedef struct s_map
 {
 	char		**map;
-	int			heigh;
+	int			height;
 	int			width;
 	t_texture	*texture;
 }	t_map;
 
+typedef struct s_game
+{
+	t_mlx	*mlx;
+	t_map	*map;
+}	t_game;
 
 #endif

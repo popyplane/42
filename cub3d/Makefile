@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: baptistevieilhescaze <baptistevieilhesc    +#+  +:+       +#+         #
+#    By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/01 12:45:26 by codespace         #+#    #+#              #
-#    Updated: 2024/06/16 17:36:17 by baptistevie      ###   ########.fr        #
+#    Updated: 2024/06/19 16:37:13 by bvieilhe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,11 +86,14 @@ LIBFT_DIR = ./libft
 LIBFT_LIB = $(LIBFT_DIR)/libft.a
 LIBFT_FLAGS	= -Llibft -lft
 
-SRCS_FILES	=	get_map.c \
-				get_map_utils.c \
+SRCS_FILES	=	display_2d.c \
 				error.c \
+				get_map_utils.c \
+				get_map.c \
 				hooks.c \
-				main.c
+				img.c \
+				main.c \
+				render.c
 
 INC_FILES	= cub3d.h
 
