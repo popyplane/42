@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: baptistevieilhescaze <baptistevieilhesc    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:27:29 by codespace         #+#    #+#             */
-/*   Updated: 2024/06/19 17:38:40 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2024/06/21 14:38:37 by baptistevie      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,23 +42,6 @@ t_map	*get_map(char *path)
 		}
 		line = get_next_line(fd);
 	}
-	return (map);
-}
-
-t_map	*init_map(void)
-{
-	t_map	*map;
-
-	map = malloc(sizeof(t_map));
-	if (!map)
-		ft_error("[init_map(...)] : t_map malloc failed");
-	garbage_collector(map, false);
-	map->height = 0;
-	map->width = 0;
-	map->texture = malloc(sizeof(t_texture));
-	if (!map->texture)
-		ft_error("[init_map(...)] : t_texture malloc failed");
-	garbage_collector(map->texture, false);
 	return (map);
 }	
 

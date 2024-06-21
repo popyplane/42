@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+         #
+#    By: baptistevieilhescaze <baptistevieilhesc    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/01 12:45:26 by codespace         #+#    #+#              #
-#    Updated: 2024/06/19 18:48:36 by bvieilhe         ###   ########.fr        #
+#    Updated: 2024/06/21 14:58:28 by baptistevie      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,6 +92,7 @@ SRCS_FILES	=	display_2d.c \
 				get_map.c \
 				hooks.c \
 				img.c \
+				init.c \
 				main.c \
 				render.c
 
