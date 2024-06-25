@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 14:25:48 by codespace         #+#    #+#             */
-/*   Updated: 2024/06/06 13:18:08 by codespace        ###   ########.fr       */
+/*   Updated: 2024/06/25 18:38:40 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	get_map_line(t_map *map, char *line, int *row)
 		ft_error("[get_map_line(...)] : malloc failed");
 	garbage_collector(map->map[*row], false);
 	i = 0;
-	while (i < map->width) // i or i+1 to handle the '\n' ? do we handle when lines are smallest than map->width?
+	while (line[i] && i < map->width) // i or i+1 to handle the '\n' ? do we handle when lines are smallest than map->width?
 	{
 		map->map[*row][i] = line[i];
 		i++; 

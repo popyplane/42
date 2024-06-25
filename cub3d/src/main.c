@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baptistevieilhescaze <baptistevieilhesc    +#+  +:+       +#+        */
+/*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:36:50 by codespace         #+#    #+#             */
-/*   Updated: 2024/06/21 15:03:21 by baptistevie      ###   ########.fr       */
+/*   Updated: 2024/06/25 18:30:02 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,8 @@ int	main(int ac, char **av)
 
     /* Setup hooks */ 
     mlx_loop_hook(data->mlx->mlx_ptr, &render_2d, &data);
-    mlx_hook(data->mlx->win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data); /* ADDED */
-    mlx_hook(data->mlx->win_ptr, KeyRelease, KeyReleaseMask, &handle_keyrelease, &data); /* CHANGED */
+    mlx_hook(data->mlx->win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
+    mlx_hook(data->mlx->win_ptr, KeyRelease, KeyReleaseMask, &handle_keyrelease, &data);
 
     mlx_loop(data->mlx->mlx_ptr);
 
