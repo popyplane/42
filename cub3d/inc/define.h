@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: baptistevieilhescaze <baptistevieilhesc    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 16:13:25 by bvieilhe          #+#    #+#             */
-/*   Updated: 2024/06/19 16:20:52 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2024/07/03 13:52:20 by baptistevie      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

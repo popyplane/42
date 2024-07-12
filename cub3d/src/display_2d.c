@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_2d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: baptistevieilhescaze <baptistevieilhesc    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 16:34:34 by bvieilhe          #+#    #+#             */
-/*   Updated: 2024/06/19 18:33:51 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2024/07/10 15:00:55 by baptistevie      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	draw_map(t_game *data)
 		j = 0;
 		while (j < data->map->height)
 		{
-			if (data->map->map[i][j] == 1)
+			if (data->map->map[i][j] == '1')
 				draw_tile(i, j, BLACK_PIXEL, data);
 			else if (data->map->map[i][j] == 0)
 				draw_tile(i, j, WHITE_PIXEL, data);
