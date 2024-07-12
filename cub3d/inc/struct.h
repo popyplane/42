@@ -6,7 +6,7 @@
 /*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:40:47 by codespace         #+#    #+#             */
-/*   Updated: 2024/06/19 18:33:26 by bvieilhe         ###   ########.fr       */
+/*   Updated: 2024/07/12 15:07:14 by bvieilhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_game
 {
 	t_mlx	*mlx;
 	t_map	*map;
-	t_img	*img;
+	t_img	img;
 }	t_game;
 
 #endif
