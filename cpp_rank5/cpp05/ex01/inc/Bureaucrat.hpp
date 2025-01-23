@@ -9,7 +9,9 @@ using	std::string;
 using	std::cout;
 using	std::endl;
 
-class Bureaucrat {
+class	Form;
+
+class	Bureaucrat {
 	
 	
 	private :
@@ -28,24 +30,25 @@ class Bureaucrat {
 		const string    getName() const;
 		int             getGrade() const;
 
-		// grade management
+		// member functions
 		void			upGrade();
 		void			downGrade();
+		void			signForm(Form &f);
 
 		// exceptions
-		class GradeTooHighException : public std::exception
-		{
+		class GradeTooHighException : public std::exception {
 			public :
 				virtual const char	*what() const throw();
-		}
+		};
 
-		class GradeTooLowException : public std::exception
-		{
+		class GradeTooLowException : public std::exception {
 			public :
 				virtual const char	*what() const throw(); 
-		}
-}
+		};
+};
 
 std::ostream	&operator<<(std::ostream &out, Bureaucrat const &src);
+
+# include "Form.hpp"
 
 #endif
