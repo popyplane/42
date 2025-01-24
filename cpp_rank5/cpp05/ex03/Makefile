@@ -2,7 +2,7 @@ NAME			=	bureaucrat03
 
 ############## Compilation & Flags ###########
 CXX				=	c++
-FLAGS			=	-Wall -Wextra -Werror
+FLAGS			=	-Wall -Wextra -Werror -g
 STD_FLAG		=	-std=c++98
 
 ############## Include Dir ###########

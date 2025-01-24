@@ -2,69 +2,36 @@
 
 int main()
 {
-	try
-	{
-		Bureaucrat	bureaucrat("Bureaucrat", 1);
-		Intern 		intern;
-		AForm		*form;
-	
-		try
-		{
-			std::cout << "\n---------- EX03 Shrubbery Test ----------\n" << std::endl;	
-			form = intern.makeForm("shrubbery creation", "Home");
-			bureaucrat.signForm(*form);
-			bureaucrat.executeForm(*form);
-			delete form;
-		}
-		catch (const std::exception &e)
-		{
-			delete form;
-			std::cout << e.what() << std::endl;
-		}
-		try
-		{
-			std::cout << "\n---------- EX03 Robotomy Test ----------\n" << std::endl;
-			form = intern.makeForm("robotomy request", "Ricky");
-			bureaucrat.signForm(*form);
-			bureaucrat.executeForm(*form);
-			delete form;
-		}
-		catch (const std::exception &e)
-		{
-			delete form;
-			std::cout << e.what() << std::endl;
-		}
+    AForm *form = nullptr;
+    try {
+        Bureaucrat bureaucrat("Bureaucrat", 1);
+        Intern intern;
 
-		try
-		{
-			std::cout << "\n---------- EX03 Presidential Test ----------\n" << std::endl;
-			form = intern.makeForm("presidential pardon", "Ivan");
-			bureaucrat.signForm(*form);
-			bureaucrat.executeForm(*form);
-			delete form;
-		}
-		catch (const std::exception &e)
-		{
-			delete form;
-			std::cout << e.what() << std::endl;
-		}
-		try
-		{
-			std::cout << "\n---------- EX03 Invalid Test ----------\n" << std::endl;
-			form = intern.makeForm("Invalid", "Dummy");
-			bureaucrat.signForm(*form);
-			bureaucrat.executeForm(*form);
-			delete form;
-		}
-		catch (const std::exception &e)
-		{
-			delete form;
-			std::cout << e.what() << std::endl;
-		}
-	}
-	catch (const std::exception &e)
-	{
-		std::cout << "Unhandled exception: " << e.what() << std::endl;
-	}
-	return (0);
+        // Shrubbery test, no changes here
+        form = intern.makeForm("shrubbery creation", "Home");
+        bureaucrat.signForm(*form);
+        bureaucrat.executeForm(*form);
+        delete form;  // Delete after use
+
+        // Robotomy test
+        form = intern.makeForm("robotomy request", "Ricky");
+        bureaucrat.signForm(*form);
+        bureaucrat.executeForm(*form);
+        delete form;
+
+        // Presidential test
+        form = intern.makeForm("presidential pardon", "Ivan");
+        bureaucrat.signForm(*form);
+        bureaucrat.executeForm(*form);
+        delete form;
+
+        // Invalid form test, where exception may occur
+        form = intern.makeForm("Invalid", "Dummy");
+        bureaucrat.signForm(*form);
+        bureaucrat.executeForm(*form);
+        delete form; // Delete even if exception occurs (inside catch)
+    } catch (const std::exception &e) {
+        std::cerr << "Exception caught: " << e.what() << std::endl;
+        if (form) delete form;  // Ensure deletion if form was created
+    }
 }
