@@ -1,37 +1,38 @@
 #include "../inc/Bureaucrat.hpp"
 
-int main()
-{
-    AForm *form = nullptr;
-    try {
-        Bureaucrat bureaucrat("Bureaucrat", 1);
-        Intern intern;
+int main() {
+	try {
+		Intern intern;
+		Bureaucrat bureaucrat("Bureaucrat", 1);
 
-        // Shrubbery test, no changes here
-        form = intern.makeForm("shrubbery creation", "Home");
-        bureaucrat.signForm(*form);
-        bureaucrat.executeForm(*form);
-        delete form;  // Delete after use
+		std::cout << "---------- EX03 Shrubbery Test ----------" << std::endl;
+		AForm *shrubberyForm = intern.makeForm("shrubbery creation", "Garden");
+		bureaucrat.signForm(*shrubberyForm);
+		bureaucrat.executeForm(*shrubberyForm);
+		delete shrubberyForm;
 
-        // Robotomy test
-        form = intern.makeForm("robotomy request", "Ricky");
-        bureaucrat.signForm(*form);
-        bureaucrat.executeForm(*form);
-        delete form;
+		std::cout << "---------- EX03 Robotomy Test ----------" << std::endl;
+		AForm *robotomyForm = intern.makeForm("robotomy request", "Ricky");
+		bureaucrat.signForm(*robotomyForm);
+		bureaucrat.executeForm(*robotomyForm);
+		delete robotomyForm;
 
-        // Presidential test
-        form = intern.makeForm("presidential pardon", "Ivan");
-        bureaucrat.signForm(*form);
-        bureaucrat.executeForm(*form);
-        delete form;
+		std::cout << "---------- EX03 Presidential Test ----------" << std::endl;
+		AForm *pardonForm = intern.makeForm("presidential pardon", "Ivan");
+		bureaucrat.signForm(*pardonForm);
+		bureaucrat.executeForm(*pardonForm);
+		delete pardonForm;
 
-        // Invalid form test, where exception may occur
-        form = intern.makeForm("Invalid", "Dummy");
-        bureaucrat.signForm(*form);
-        bureaucrat.executeForm(*form);
-        delete form; // Delete even if exception occurs (inside catch)
-    } catch (const std::exception &e) {
-        std::cerr << "Exception caught: " << e.what() << std::endl;
-        if (form) delete form;  // Ensure deletion if form was created
-    }
+		std::cout << "---------- EX03 Invalid Test ----------" << std::endl;
+		AForm *invalidForm = intern.makeForm("invalid form name", "dummy");
+		delete invalidForm;
+
+	}
+	catch (const Intern::InvalidFormNameException &e)
+	{
+		std::cerr << "Caught an exception: " << e.what() << std::endl;
+	}
+
+	return 0;
 }
+
