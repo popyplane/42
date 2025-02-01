@@ -1,16 +1,9 @@
 #include "../inc/ScalarConverter.hpp"
 
-int main(int argc, char **argv)
+int main()
 {
 	try
 	{
-		if (argc != 2)
-			throw (std::invalid_argument("Tuto: ./convert <input>"));
-			
-		string lit = argv[1];
-
-   		ScalarConverter::convert(lit);
-        cout << endl;
 		ScalarConverter::convert("0");
         cout << endl;
 		ScalarConverter::convert("3.14f");
