@@ -1,4 +1,4 @@
-NAME			=	scalarConverter
+NAME			=	serializer
 
 ############## Compilation & Flags ###########
 CXX				=	c++
@@ -7,12 +7,12 @@ STD_FLAG		=	-std=c++98
 
 ############## Include Dir ###########
 INC_DIR			=	inc/
-INC_FD			=	ScalarConverter.hpp
+INC_FD			=	Serializer.hpp
 INC				=	$(addprefix $(INC_DIR), $(INC_FD))
 
 ############## SRC Dirs & Files ##############
 SRCS_DIR		=	src/
-SRCS_FD			=	ScalarConverter.cpp \
+SRCS_FD			=	Serializer.cpp \
 					main.cpp
 
 SRCS			=	$(addprefix $(SRCS_DIR), $(SRCS_FD))
@@ -37,6 +37,7 @@ $(OBJ_DIR)/%.o:$(SRCS_DIR)/%.c
 
 clean:
 	rm -rf $(OBJ_DIR)
+
 	@echo "\033[34m $(OBJ_DIR) deleted\033[0m"
 
 fclean:	clean

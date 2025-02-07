@@ -1,4 +1,4 @@
-NAME			=	scalarConverter
+NAME			=	iter
 
 ############## Compilation & Flags ###########
 CXX				=	c++
@@ -7,13 +7,12 @@ STD_FLAG		=	-std=c++98
 
 ############## Include Dir ###########
 INC_DIR			=	inc/
-INC_FD			=	ScalarConverter.hpp
+INC_FD			=	Iter.hpp
 INC				=	$(addprefix $(INC_DIR), $(INC_FD))
 
 ############## SRC Dirs & Files ##############
 SRCS_DIR		=	src/
-SRCS_FD			=	ScalarConverter.cpp \
-					main.cpp
+SRCS_FD			=	main.cpp
 
 SRCS			=	$(addprefix $(SRCS_DIR), $(SRCS_FD))
 
