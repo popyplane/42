@@ -21,9 +21,9 @@ Span    &Span::operator=(Span &src)
 {
 	if (this != &src)
 	{
+		_size = src._size;
 		_data = src._data;
 		_minSpan = src._minSpan;
-		_size = src._minSpan;
 	}
 	return (*this);
 }
@@ -39,7 +39,7 @@ void    Span::addNumber(int n)
 
 unsigned int	Span::shortestSpan()
 {
-	if (_data.size <= 2)
+	if (_data.size() <= 2)
 		throw (std::logic_error("Not enough numbers to calculate the shortest span"));
 	return (_minSpan);
 }
@@ -48,20 +48,20 @@ unsigned int	Span::longestSpan()
 {
 	if (_data.size() <= 2)
 		throw (std::logic_error("Not enough numbers to calculate the longest span"));
-	return (calculateSpan(*(_data.begin()), *(_data.end() - 1)));
+	return (calculateSpan(*(_data.begin()), *(std::prev(_data.end()))));
 }
 
-void    evaluateMinSpan(std::multiset<int>::iterator it, int n)
+void    Span::evaluateMinSpan(std::multiset<int>::iterator it, int n)
 {
 	if (_minSpan == 0)
 		return;
 	if (it != _data.begin())
-		evaluateSpan(*(it - 1), n);
-	if (it != _data.end() - 1)
-		evaluateSpan(*(it + 1), n);
+		evaluateSpan(*(std::prev(it)), n);
+	if (it != std::prev(_data.end()))
+		evaluateSpan(*(std::next(it)), n);
 }
 
-void    evaluateSpan(int num1, int num2)
+void    Span::evaluateSpan(int num1, int num2)
 {
 	int span = calculateSpan(num1, num2);
 	
@@ -69,7 +69,7 @@ void    evaluateSpan(int num1, int num2)
 		_minSpan = span;
 }
 
-unsigned int    calculateSpan(int num1, int num2)
+unsigned int    Span::calculateSpan(int num1, int num2)
 {
 	long	diff = static_cast<long>(num1) - static_cast<long>(num2);
 	

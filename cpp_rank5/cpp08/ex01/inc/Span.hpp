@@ -1,6 +1,14 @@
 #ifndef SPAN_HPP
 # define SPAN_HPP
 
+# include <algorithm>
+# include <limits>
+# include <sstream>
+# include <stdexcept>
+# include <iostream>
+# include <set>
+# include <exception>
+
 class Span
 {
 	private :
@@ -8,14 +16,14 @@ class Span
 
 		static const unsigned int	kMaxSpan;
 		
-		const unsigned int	_size;
+		unsigned int		_size;
 		unsigned int		_minSpan;
 		std::multiset<int>	_data;
 
 		// utils
 		void	evaluateMinSpan(std::multiset<int>::iterator it, int n);
 		void	evaluateSpan(int num1, int num2);
-		int		calculateSpan(int num1, int num2);
+		unsigned int		calculateSpan(int num1, int num2);
 
 	public :
 		// canon
