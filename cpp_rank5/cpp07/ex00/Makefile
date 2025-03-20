@@ -27,7 +27,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@echo "\033[33m Compiling $(NAME)...\033[0m"
-	$(CXX) $(OBJS) -o $(NAME)
+	$(CXX) $(FLAGS) $(STD_FLAG) $(OBJS) -o $(NAME)
 	@echo "\033[32m$(NAME) is ready to use\033[0m"
 
 $(OBJ_DIR)/%.o:$(SRCS_DIR)/%.c

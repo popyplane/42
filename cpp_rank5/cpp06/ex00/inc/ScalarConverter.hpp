@@ -7,6 +7,7 @@
 # include <sstream>
 # include <climits>
 # include <cfloat>
+# include <cstdlib>
 
 using std::string;
 using std::cout;
