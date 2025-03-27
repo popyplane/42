@@ -13,10 +13,10 @@
 # include <string>
 # include <exception>
 
-# define ERR_FILE_OPEN_FAILED "could not open file"
-# define ERR_BAD_INPUT "bad input => "
-# define ERR_NEGATIVE_NUM "not a positive number."
-# define ERR_TOO_LARGE "too large a number."
+# define ERR_FILE_OPEN_FAILED std::string("could not open file")
+# define ERR_BAD_INPUT std::string("bad input => ")
+# define ERR_NEGATIVE_NUM std::string("not a positive number.")
+# define ERR_TOO_LARGE std::string("too large a number.")
 
 std::map<time_t, double>    readCSV(const std::string &csvFile);
 time_t                      parseDate(const std::string &dateStr);

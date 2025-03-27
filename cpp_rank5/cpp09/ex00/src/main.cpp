@@ -4,7 +4,7 @@ int main(int argc, char **argv)
 {
 	if (argc == 1) {
 		std::cerr << "Input file is needed" << std::endl;
-	} else if (argc > 1) {
+	} else if (argc > 2) {
 		std::cerr << "Too many arguments" << std::endl;
 	} else if (argc == 2) {
 		try {

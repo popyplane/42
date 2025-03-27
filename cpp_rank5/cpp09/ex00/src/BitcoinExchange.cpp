@@ -1,6 +1,6 @@
 #include "../inc/BitcoinExchange.hpp"
 
-std::map<time_t, double>    readCSV(std::string &csvFile)
+std::map<time_t, double>    readCSV(const std::string &csvFile)
 {
 	std::map<time_t, double>    btcRates;
 	std::ifstream               inFile(csvFile.c_str());
@@ -21,8 +21,10 @@ std::map<time_t, double>    readCSV(std::string &csvFile)
 		if (line.empty())
 			throw (std::logic_error(ERR_BAD_INPUT + "empty"));
 
-		std::string dateStr = trim(line.substr(0, commaIndex));
-		std::string rateStr = trim(line.substr(commaIndex + 1));
+		std::string	subDate = line.substr(0, commaIndex);
+		std::string	subRate = line.substr(commaIndex + 1);
+		std::string dateStr = trim(subDate);
+		std::string rateStr = trim(subRate);
 		btcRates.insert(std::make_pair(parseDate(dateStr), parseRate(rateStr)));
 	}
 
@@ -33,10 +35,10 @@ std::map<time_t, double>    readCSV(std::string &csvFile)
 time_t  parseDate(const std::string &dateStr)
 {
 	if (dateStr.empty())
-		throw (std::runtime_error(ERR_BAD_INPUT + "empty"))
+		throw (std::runtime_error(ERR_BAD_INPUT + "empty date"));
 	if (dateStr.size() != 10)
-		throw (std::runtime_error(ERR_BAD_INPUT + dateStr))
-
+		throw (std::runtime_error(ERR_BAD_INPUT + dateStr));
+	
 	struct std::tm		tm = {};
 	std::istringstream	ss(dateStr);
 	char				hyphen1, hyphen2;
@@ -59,12 +61,12 @@ time_t  parseDate(const std::string &dateStr)
 double	parseRate(const std::string &rateStr)
 {
 	if (rateStr.empty())
-		throw (std::runtime_error(ERR_BAD_INPUT + "empty value"))
+		throw (std::runtime_error(ERR_BAD_INPUT + "empty value"));
 
 	std::istringstream	ss(rateStr);
 	double				rate;
 
-	if (!(isValidRate(rateStr) || !(ss >> rate)))
+	if (!isValidRate(rateStr) || !(ss >> rate))
 		throw (std::runtime_error(ERR_BAD_INPUT + rateStr));
 	if (rate < 0)
 		throw (std::runtime_error(ERR_NEGATIVE_NUM));
@@ -74,7 +76,7 @@ double	parseRate(const std::string &rateStr)
 	return (rate);
 }
 
-std::string		trim(const std::string &str)
+std::string		trim(std::string &str)
 {
 	size_t	start = 0;
 
@@ -84,7 +86,7 @@ std::string		trim(const std::string &str)
 	std::string	leftTrimmed(str.substr(start));
 	size_t		end = leftTrimmed.size();
 
-	while (end > 0 && std::isspace(leftTrimmed[end]))
+	while (end > 0 && std::isspace(leftTrimmed[end - 1]))
 		end--;
 
 	return (leftTrimmed.substr(0, end));
@@ -130,7 +132,7 @@ bool	isValidRate(const std::string &rateStr)
 	return (true);
 }
 
-void	processInputFile(const std::string &inputFileinputFile, std::map<time_t, double> btcRates)
+void	processInputFile(const std::string &inputFile, std::map<time_t, double> btcRates)
 {
 	std::ifstream	inFile(inputFile.c_str());
 	std::string		line;
@@ -151,7 +153,7 @@ void	processInputFile(const std::string &inputFileinputFile, std::map<time_t, do
 	inFile.close();
 }
 
-void	processLine(const std::string &lineinputFile, std::map<time_t, double> btcRates)
+void	processLine(const std::string &line, std::map<time_t, double> btcRates)
 {
 	if (line.empty())
 		return;
@@ -161,8 +163,10 @@ void	processLine(const std::string &lineinputFile, std::map<time_t, double> btcR
 	if (pipeIndex == std::string::npos)
 		throw (std::logic_error(ERR_BAD_INPUT + line));
 
-	const std::string	dateStr = trim(line.substr(0, pipeIndex));
-	const std::string	rateStr = trim(line.substr(pipeIndex + 1));
+	std::string	subDate = line.substr(0, pipeIndex);
+	std::string	subRate = line.substr(pipeIndex + 1);
+	std::string dateStr = trim(subDate);
+	std::string rateStr = trim(subRate);
 	
 	time_t	date = parseDate(dateStr);
 	double	rate = parseRate(rateStr);
