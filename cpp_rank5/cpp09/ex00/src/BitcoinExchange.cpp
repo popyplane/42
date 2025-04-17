@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bvieilhe <bvieilhe@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/17 09:41:40 by bvieilhe          #+#    #+#             */
+/*   Updated: 2025/04/17 09:41:41 by bvieilhe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/BitcoinExchange.hpp"
 
 std::map<time_t, double>    readCSV(const std::string &csvFile)
