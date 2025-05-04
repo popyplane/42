@@ -17,6 +17,7 @@ fi
 
 echo "All required environment variables are set."
 
+# Only initialize if this is the first start
 if [ ! -d "/var/lib/mysql/mysql" ]; then
     echo "Initializing MariaDB database..."
     
@@ -26,11 +27,6 @@ if [ ! -d "/var/lib/mysql/mysql" ]; then
     
     # Initialize the database
     mysql_install_db --user=mysql --datadir=/var/lib/mysql
-    INSTALL_RESULT=$?
-    if [ $INSTALL_RESULT -ne 0 ]; then
-        echo "ERROR: mysql_install_db failed with exit code $INSTALL_RESULT"
-        exit 1
-    fi
     
     echo "Directory structure after initialization:"
     ls -la /var/lib/mysql/
@@ -53,45 +49,13 @@ EOF
     
     # Execute the SQL file with bootstrap
     mysqld --user=mysql --bootstrap < "$TMP_SQL"
-    SQL_RESULT=$?
-    
-    if [ $SQL_RESULT -eq 0 ]; then
-        echo "MariaDB database initialized successfully!"
-    else
-        echo "ERROR: Failed to initialize MariaDB database (exit code: $SQL_RESULT)"
-        echo "Trying alternative method..."
-        
-        # Create another temporary SQL file with alternative syntax
-        ALT_SQL=$(mktemp)
-        cat > "$ALT_SQL" <<EOF
-USE mysql;
-CREATE DATABASE IF NOT EXISTS ${MYSQL_DATABASE};
-CREATE USER '${MYSQL_USER}'@'%';
-SET PASSWORD FOR '${MYSQL_USER}'@'%' = PASSWORD('${MYSQL_PASSWORD}');
-GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO '${MYSQL_USER}'@'%';
-SET PASSWORD FOR 'root'@'localhost' = PASSWORD('${MYSQL_ROOT_PASSWORD}');
-FLUSH PRIVILEGES;
-EOF
-        
-        # Execute the alternative SQL
-        mysqld --user=mysql --bootstrap < "$ALT_SQL"
-        ALT_RESULT=$?
-        
-        if [ $ALT_RESULT -eq 0 ]; then
-            echo "MariaDB database initialized successfully with alternative approach"
-        else
-            echo "ERROR: Both initialization approaches failed"
-            echo "Last error output:"
-            mysqld --user=mysql --bootstrap < "$ALT_SQL" 2>&1 || true
-            exit 1
-        fi
-    fi
     
     # Cleanup
-    rm -f "$TMP_SQL" "$ALT_SQL" 2>/dev/null
-else
-    echo "MariaDB database directory already exists, skipping initialization"
+    rm -f "$TMP_SQL"
+    
+    echo "MariaDB database initialized successfully!"
 fi
 
-echo "Starting main MariaDB process with command: $@"
+echo "Starting MariaDB server..."
+
 exec "$@"
